@@ -82,7 +82,7 @@ const GlobalStyles = createGlobalStyle`
             display: flex;
             height: 10px;
             background: ${props.accentColor};
-            width: 20vw;
+            width: 20rem;
             margin: 1.3rem;
             justify-items: center;
             border-radius: 1rem;
