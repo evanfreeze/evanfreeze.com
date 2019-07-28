@@ -1,6 +1,6 @@
 import React from 'react'
 import { render } from 'react-dom'
-import styled from 'styled-components'
+import styled, { createGlobalStyle, css } from 'styled-components'
 import {
     FaTwitter,
     FaGithub,
@@ -9,11 +9,30 @@ import {
     FaDev,
 } from 'react-icons/fa'
 
-const subtitle = 'Software Engineer • Nashville, TN'
+import { getRandomValueFromArray } from './utils';
+import ACCENT_COLORS from './colors';
 
-const App = () => (
-    <GlobalStyles>
+const subtitle = 'Software Engineer • Nashville, TN'
+const linkColor = 'darkgray';
+const COLOR_TIMEOUT = 2000; // ms
+
+const App = () => {
+    const [accentColor, setAccentColor] = React.useState('lightblue')
+
+    React.useEffect(() => {
+        const colorTimeout = setTimeout(() => {
+            const newColor = getRandomValueFromArray(ACCENT_COLORS, accentColor)
+            setAccentColor(newColor);
+        }, COLOR_TIMEOUT);
+
+        return () => {
+            clearTimeout(colorTimeout);
+        }
+    }, [accentColor, getRandomValueFromArray])
+
+    return (
         <MainArticle>
+            <GlobalStyles accentColor={accentColor} />
             <h1>Evan Freeze</h1>
             <h2>{subtitle}</h2>
             <aside>
@@ -36,11 +55,15 @@ const App = () => (
                 </SocialLinks>
             </aside>
         </MainArticle>
-    </GlobalStyles>
-)
+    )
+}
 
-const GlobalStyles = styled.div`
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+const GlobalStyles = createGlobalStyle`
+    body {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        margin: 0;
+        height: 100vh;
+    }
 
     h1 {
         font-size: 2rem;
@@ -52,6 +75,20 @@ const GlobalStyles = styled.div`
         margin: 0;
         opacity: 0.65;
     }
+
+    ${props => css`
+        aside::before {
+            content: '';
+            display: flex;
+            height: 10px;
+            background: ${props.accentColor};
+            width: 20vw;
+            margin: 1.3rem;
+            justify-items: center;
+            border-radius: 1rem;
+            transition: background 2s ease-in-out;
+        }
+    `}
 `
 
 const MainArticle = styled.article`
@@ -65,18 +102,17 @@ const MainArticle = styled.article`
 const SocialLinks = styled.ul`
     list-style: none;
     padding: 0;
-    margin: 2rem;
     display: flex;
     justify-content: center;
 `
 
 const Icon = styled.a`
     margin: 0 0.5rem;
-    color: darkgray;
+    color: ${linkColor};
     transition: color 0.15s ease-in-out;
 
     &:visited {
-        color: lightblue;
+        color: ${linkColor};
     }
 
     &:hover {
