@@ -17,7 +17,7 @@ const linkColor = 'darkgray';
 const COLOR_TIMEOUT = 2000; // ms
 
 const App = () => {
-    const [accentColor, setAccentColor] = React.useState('lightblue')
+    const [accentColor, setAccentColor] = React.useState(getRandomValueFromArray(ACCENT_COLORS, 'lightblue'))
 
     React.useEffect(() => {
         const colorTimeout = setTimeout(() => {
