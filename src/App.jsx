@@ -1,6 +1,7 @@
 import React from 'react'
 import { render } from 'react-dom'
 import styled, { createGlobalStyle, css } from 'styled-components'
+import { SwipeableDrawer } from '@material-ui/core'
 import {
     FaTwitter,
     FaGithub,
@@ -8,6 +9,7 @@ import {
     FaInstagram,
     FaDev,
 } from 'react-icons/fa'
+import { FiMenu, FiX } from 'react-icons/fi'
 
 import { getRandomValueFromArray } from './utils';
 import ACCENT_COLORS from './colors';
@@ -18,6 +20,7 @@ const COLOR_TIMEOUT = 2000; // ms
 
 const App = () => {
     const [accentColor, setAccentColor] = React.useState(getRandomValueFromArray(ACCENT_COLORS, 'lightblue'))
+    const [isDrawerOpen, setIsDrawerOpen] = React.useState(false)
 
     React.useEffect(() => {
         const colorTimeout = setTimeout(() => {
@@ -33,9 +36,26 @@ const App = () => {
     return (
         <MainArticle>
             <GlobalStyles accentColor={accentColor} />
+            <MenuButton onClick={() => setIsDrawerOpen(true)} color={accentColor}>
+                <FiMenu />
+            </MenuButton>
+            <SwipeableDrawer
+                open={isDrawerOpen}
+                onOpen={() => console.log('opened')}
+                onClose={() => console.log('closed')}
+            >
+                <DrawerContents>
+                    <MenuButton onClick={() => setIsDrawerOpen(false)} color={accentColor}>
+                        <FiX />
+                    </MenuButton>
+                    <div>
+                        <p>Come back for more soon</p>
+                    </div>
+                </DrawerContents>
+            </SwipeableDrawer>
             <h1>Evan Freeze</h1>
             <h2>{subtitle}</h2>
-            <aside>
+            <section>
                 <SocialLinks>
                     <Icon href="https://twitter.com/evanfreeze" target="_blank" rel="noopener noreferrer">
                         <FaTwitter />
@@ -53,7 +73,7 @@ const App = () => {
                         <FaLinkedin />
                     </Icon>
                 </SocialLinks>
-            </aside>
+            </section>
         </MainArticle>
     )
 }
@@ -77,7 +97,7 @@ const GlobalStyles = createGlobalStyle`
     }
 
     ${props => css`
-        aside::before {
+        section::before {
             content: '';
             display: flex;
             height: 10px;
@@ -89,6 +109,30 @@ const GlobalStyles = createGlobalStyle`
             transition: background 2s ease-in-out;
         }
     `}
+`
+
+const MenuButton = styled.button`
+    ${props => css`
+        outline: 0;
+        border: 0;
+        font-size: 1.6rem;
+        position: fixed;
+        color: ${props.color};
+        transition: color 2s ease-in-out;
+        top: 10px;
+        left: 8px;
+
+        &:hover {
+            cursor: pointer;
+            color: black;
+        }`
+    }
+`
+
+const DrawerContents = styled.aside`
+    margin-top: 34px;
+    padding: 1.5rem;
+    padding-right: 3.5rem;
 `
 
 const MainArticle = styled.article`
