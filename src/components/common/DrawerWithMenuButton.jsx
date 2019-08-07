@@ -2,8 +2,8 @@ import React, { useState, useContext } from 'react'
 import styled, { css } from 'styled-components'
 import { FiMenu, FiX } from 'react-icons/fi'
 import { SwipeableDrawer } from '@material-ui/core'
-import { Link } from '@reach/router'
 import { ColorContext } from './ColorChangeContext.jsx';
+import NavLink from './NavLink.jsx';
 
 const DrawerWithMenuButton = () => {
     const [isDrawerOpen, setIsDrawerOpen] = useState(false)
@@ -14,20 +14,20 @@ const DrawerWithMenuButton = () => {
             <MenuButton onClick={() => setIsDrawerOpen(true)} color={color}>
                 <FiMenu />
             </MenuButton>
-            <SwipeableDrawer open={isDrawerOpen}>
+            <SwipeableDrawer open={isDrawerOpen} onOpen={() => { }} onClose={() => { }}>
                 <DrawerContents>
                     <MenuButton onClick={() => setIsDrawerOpen(false)} color={color}>
                         <FiX />
                     </MenuButton>
                     <LinkList>
                         <ListItem>
-                            <Link to="/">Home</Link>
+                            <NavLink to="/">Home</NavLink>
                         </ListItem>
                         <ListItem>
-                            <Link to="/projects/wikipedia-search">Wikipedia Search</Link>
+                            <NavLink to="/projects/wikipedia-search">Wikipedia Search</NavLink>
                         </ListItem>
                         <ListItem>
-                            <Link to="/projects/itunes-preview">iTunes Preview</Link>
+                            <NavLink to="/projects/itunes-preview">iTunes Preview</NavLink>
                         </ListItem>
                     </LinkList>
                 </DrawerContents>

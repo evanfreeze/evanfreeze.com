@@ -36,6 +36,11 @@ const GlobalStyles = createGlobalStyle`
         margin: 0;
         opacity: 0.65;
     }
+
+    a {
+        text-decoration: none;
+        color: rgba(0,0,0,0.85);
+    }
 `
 
 render(<App />, document.getElementById('root'))
