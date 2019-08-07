@@ -1,11 +1,14 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import styled, { css } from 'styled-components'
 import { FiMenu, FiX } from 'react-icons/fi'
 import { SwipeableDrawer } from '@material-ui/core'
 import { Link } from '@reach/router'
+import { ColorContext } from './ColorChangeContext.jsx';
 
-const DrawerWithMenuButton = ({ color }) => {
+const DrawerWithMenuButton = () => {
     const [isDrawerOpen, setIsDrawerOpen] = useState(false)
+    const color = useContext(ColorContext)
+
     return (
         <>
             <MenuButton onClick={() => setIsDrawerOpen(true)} color={color}>

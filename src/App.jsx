@@ -3,19 +3,20 @@ import { render } from 'react-dom'
 import { Router } from '@reach/router'
 import { createGlobalStyle } from 'styled-components'
 
-import Home from './Home.jsx';
-import WikipediaViewer from './projects/WikipediaViewer.jsx';
-import ITunesSearcher from './projects/ITunesSearcher.jsx';
+import ColorProvider from './components/common/ColorChangeContext.jsx';
+import Home from './components/pages/Home.jsx';
+import WikipediaViewer from './components/pages/projects/WikipediaViewer.jsx';
+import ITunesSearcher from './components/pages/projects/ITunesSearcher.jsx';
 
 const App = () => (
-    <>
+    <ColorProvider>
         <GlobalStyles />
         <Router>
             <Home path="/" />
             <WikipediaViewer path="/projects/wikipedia-search" />
             <ITunesSearcher path="/projects/itunes-preview" />
         </Router>
-    </>
+    </ColorProvider>
 )
 
 const GlobalStyles = createGlobalStyle`

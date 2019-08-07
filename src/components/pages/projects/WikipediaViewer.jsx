@@ -1,6 +1,6 @@
 import React from 'react'
 
-import FullScreenFrame from '../FullScreenFrame.jsx'
+import FullScreenFrame from '../../common/FullScreenFrame.jsx';
 
 const WikipediaViewer = () => (
     <FullScreenFrame

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import styled, { css } from 'styled-components'
 import {
     FaTwitter,
@@ -8,35 +8,21 @@ import {
     FaDev,
 } from 'react-icons/fa'
 
-import { getRandomValueFromArray } from './utils';
-import ACCENT_COLORS from './colors';
-
-import DrawerWithMenuButton from './DrawerWithMenuButton.jsx';
+import DrawerWithMenuButton from '../common/DrawerWithMenuButton.jsx';
+import { ColorContext } from '../common/ColorChangeContext.jsx';
 
 const subtitle = 'Software Engineer • Nashville, TN'
-const COLOR_TIMEOUT = 2000; // ms
 
 const Home = () => {
-    const [accentColor, setAccentColor] = React.useState(getRandomValueFromArray(ACCENT_COLORS, 'lightblue'))
-
-    React.useEffect(() => {
-        const colorTimeout = setTimeout(() => {
-            const newColor = getRandomValueFromArray(ACCENT_COLORS, accentColor)
-            setAccentColor(newColor);
-        }, COLOR_TIMEOUT);
-
-        return () => {
-            clearTimeout(colorTimeout);
-        }
-    }, [accentColor, getRandomValueFromArray])
+    const color = useContext(ColorContext)
 
     return (
         <>
-            <DrawerWithMenuButton color={accentColor} />
+            <DrawerWithMenuButton />
             <MainArticle>
                 <h1>Evan Freeze</h1>
                 <h2>{subtitle}</h2>
-                <ColorChangeSection accentColor={accentColor}>
+                <ColorChangeSection accentColor={color}>
                     <SocialLinks>
                         <Icon href="https://twitter.com/evanfreeze" target="_blank" rel="noopener noreferrer">
                             <FaTwitter />
