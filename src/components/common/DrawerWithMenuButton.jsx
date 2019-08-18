@@ -38,6 +38,7 @@ const DrawerWithMenuButton = () => {
 
 const MenuButton = styled.button`
     ${props => css`
+        background: white;
         outline: 0;
         border: 0;
         font-size: 1.6rem;
