@@ -46,6 +46,7 @@ const MenuButton = styled.button`
         transition: color 2s ease-in-out;
         top: 10px;
         left: 8px;
+        padding-top: 8px;
 
         &:hover {
             cursor: pointer;
