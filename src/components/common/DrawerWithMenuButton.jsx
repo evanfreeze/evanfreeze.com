@@ -29,6 +29,9 @@ const DrawerWithMenuButton = () => {
                         <ListItem>
                             <NavLink to="/projects/itunes-preview">iTunes Preview</NavLink>
                         </ListItem>
+                        <ListItem>
+                            <NavLink to="/projects/easy-timer">Easy Timer</NavLink>
+                        </ListItem>
                     </LinkList>
                 </DrawerContents>
             </SwipeableDrawer>
