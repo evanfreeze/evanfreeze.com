@@ -7,6 +7,7 @@ import ColorProvider from './components/common/ColorChangeContext.jsx';
 import Home from './components/pages/Home.jsx';
 import WikipediaViewer from './components/pages/projects/WikipediaViewer.jsx';
 import ITunesSearcher from './components/pages/projects/ITunesSearcher.jsx';
+import EasyTimer from './components/pages/projects/EasyTimer.jsx';
 
 const App = () => (
     <ColorProvider>
@@ -15,6 +16,7 @@ const App = () => (
             <Home path="/" />
             <WikipediaViewer path="/projects/wikipedia-search" />
             <ITunesSearcher path="/projects/itunes-preview" />
+            <EasyTimer path="/projects/easy-timer" />
         </Router>
     </ColorProvider>
 )

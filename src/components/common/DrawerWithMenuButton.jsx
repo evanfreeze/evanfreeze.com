@@ -29,6 +29,9 @@ const DrawerWithMenuButton = () => {
                         <ListItem>
                             <NavLink to="/projects/itunes-preview">iTunes Preview</NavLink>
                         </ListItem>
+                        <ListItem>
+                            <NavLink to="/projects/easy-timer">Easy Timer</NavLink>
+                        </ListItem>
                     </LinkList>
                 </DrawerContents>
             </SwipeableDrawer>
@@ -38,6 +41,8 @@ const DrawerWithMenuButton = () => {
 
 const MenuButton = styled.button`
     ${props => css`
+        background: white;
+        border-radius: 6px;
         outline: 0;
         border: 0;
         font-size: 1.6rem;
@@ -46,6 +51,7 @@ const MenuButton = styled.button`
         transition: color 2s ease-in-out;
         top: 10px;
         left: 8px;
+        padding-top: 8px;
 
         &:hover {
             cursor: pointer;
