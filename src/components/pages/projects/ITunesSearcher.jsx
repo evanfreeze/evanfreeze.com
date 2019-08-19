@@ -2,11 +2,11 @@ import React from 'react'
 
 import FullScreenFrame from '../../common/FullScreenFrame.jsx';
 
-const ITunesSearchher = () => (
+const ITunesSearcher = () => (
     <FullScreenFrame
         title="iTunes Searcher"
         url="https://evanfreeze.github.io/itunes-searcher/"
     />
 )
 
-export default ITunesSearchher
+export default ITunesSearcher
