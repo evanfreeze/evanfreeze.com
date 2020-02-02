@@ -38,10 +38,10 @@ var COLORS = [
 ];
 
 function getRandomColor(currentValue) {
-    const maxIndex = COLORS.length - 1;
-    const random = Math.random() * maxIndex;
-    const minValue = Math.min(random, maxIndex);
-    let idx = Math.round(minValue);
+    var maxIndex = COLORS.length - 1;
+    var random = Math.random() * maxIndex;
+    var minValue = Math.min(random, maxIndex);
+    var idx = Math.round(minValue);
     if (currentValue === COLORS[idx]) {
         if (idx === maxIndex) {
             idx -= 1;
