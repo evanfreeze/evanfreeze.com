@@ -37,7 +37,7 @@ var COLORS = [
     '#5245c2'
 ];
 
-function getRandomColor(currentValue) {
+export function getRandomColor(currentValue) {
     var maxIndex = COLORS.length - 1;
     var random = Math.random() * maxIndex;
     var minValue = Math.min(random, maxIndex);
@@ -51,16 +51,3 @@ function getRandomColor(currentValue) {
     }
     return COLORS[idx];
 }
-
-function changeColor() {
-    var rootElement = document.documentElement;
-    var currentColor = rootElement.style.getPropertyValue('--accent-color');
-    var newColor = getRandomColor(currentColor);
-    rootElement.style.setProperty('--accent-color', newColor);
-}
-
-document.getElementById('social-links').style.visibility = 'visible';
-
-changeColor();
-
-window.setInterval(changeColor, 2500);
