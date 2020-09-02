@@ -4,7 +4,7 @@ import { FaTwitter, FaInstagram, FaGithub, FaDev, FaLinkedinIn } from 'react-ico
 import { getRandomColor } from '../helpers';
 
 function HomePage() {
-    const [color, setColor] = useState(getRandomColor());
+    const [color, setColor] = useState('#ff00bf');
     useEffect(() => {
         const colorInterval = setInterval(() => {
             const nextColor = getRandomColor(color);
