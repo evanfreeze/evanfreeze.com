@@ -76,6 +76,7 @@ export async function getStaticProps() {
             return returnVal;
         });
         return data;
+        // @ts-ignore
     })(require.context('../../posts', true, /\.md$/));
 
     const promises = postsPaths.map(async (path: string) => {

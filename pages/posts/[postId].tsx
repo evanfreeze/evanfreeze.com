@@ -69,6 +69,7 @@ export async function getStaticPaths() {
             return returnVal;
         });
         return data;
+        // @ts-ignore
     })(require.context('../../posts', true, /\.md$/));
 
     const paths = postIds.map(postId => ({
