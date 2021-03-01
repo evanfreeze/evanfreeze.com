@@ -1,0 +1,11 @@
+---
+title: Welcome
+subtitle: Here goes nothin'
+date: February 28, 2021
+---
+
+Hey there 👋🏻
+
+I don't know exactly what this space will become; I do know it'll have stuff I find interesting.
+
+Thanks for reading.

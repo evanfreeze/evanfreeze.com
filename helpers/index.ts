@@ -37,7 +37,7 @@ var COLORS = [
     '#5245c2'
 ];
 
-export function getRandomColor(currentValue) {
+export function getRandomColor(currentValue: string) {
     var maxIndex = COLORS.length - 1;
     var random = Math.random() * maxIndex;
     var minValue = Math.min(random, maxIndex);
