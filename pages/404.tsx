@@ -5,7 +5,7 @@ function NotFound() {
     return (
         <>
             <Head>
-                <title>EF • Not Found</title>
+                <title>Not Found</title>
             </Head>
             <h1>Whoops</h1>
             <p>There's not a page at this address 🤔</p>

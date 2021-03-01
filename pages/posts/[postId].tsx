@@ -3,25 +3,25 @@ import Head from 'next/head';
 import matter from 'gray-matter';
 import ReactMarkdown from 'react-markdown';
 import styled from 'styled-components';
+import Link from 'next/link';
+
+import Title from '../../components/Title';
 
 function Post({ post }) {
     return (
         <>
             <Head>
-                <title>EF • {post.title}</title>
+                <title>{post.title}</title>
             </Head>
             <Title>{post.title}</Title>
             <Date>{post.date}</Date>
             <Article>
                 <ReactMarkdown source={post.body} />
             </Article>
+            <Link href="/posts">← All Posts</Link>
         </>
     );
 }
-
-const Title = styled.h1`
-    margin-bottom: 0;
-`;
 
 const Date = styled.h2`
     font-size: 0.85rem;
@@ -66,7 +66,6 @@ export async function getStaticPaths() {
         const keys = context.keys();
         const data = keys.map(key => {
             const returnVal = key.replace(/^.*[\\\/]/, '').slice(0, -3);
-            console.log(returnVal);
             return returnVal;
         });
         return data;

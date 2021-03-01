@@ -1,6 +1,8 @@
 import React from 'react';
 import styled, { createGlobalStyle } from 'styled-components';
 import Head from 'next/head';
+import { useRouter } from 'next/router';
+import Navigation from '../components/Navigation';
 
 const GlobalStyle = createGlobalStyle`
     html {
@@ -24,9 +26,16 @@ const GlobalStyle = createGlobalStyle`
         color: rgba(0, 0, 0, 0.8);
     }
 
+    a {
+        color: #0f7abc;
+        text-decoration: none;
+    }
+
 `;
 
 function MyApp({ Component, pageProps }) {
+    const router = useRouter();
+
     return (
         <AppLayout>
             <GlobalStyle />
@@ -34,18 +43,24 @@ function MyApp({ Component, pageProps }) {
                 <meta charSet="UTF-8" />
                 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
                 <meta httpEquiv="X-UA-Compatible" content="ie=edge" />
-                <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
-                <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+
+                <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+                <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+                <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+                <link rel="manifest" href="/site.webmanifest" />
+                <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#000000" />
+                <meta name="msapplication-TileColor" content="#000000" />
+                <meta name="theme-color" content="#ffffff" />
             </Head>
-            <LeftColumn>
-                <Name>
-                    <span>Evan</span>
-                    <span>Freeze</span>
-                </Name>
-                <Footer>
-                    <span>Copyright © 2021 • Evan Freeze</span>
-                </Footer>
-            </LeftColumn>
+            {router.asPath !== '/' && (
+                <LeftColumn>
+                    <Name>EF</Name>
+                    <Navigation />
+                    <Footer>
+                        <span>Copyright © 2019 – 2021 • Evan Freeze</span>
+                    </Footer>
+                </LeftColumn>
+            )}
             <CenterColumn>
                 <Component {...pageProps} />
             </CenterColumn>
@@ -62,25 +77,19 @@ const AppLayout = styled.div`
 const CenterColumn = styled.main`
     grid-column-start: 2;
     overflow: auto;
-    padding: 0 20px;
+    padding: 2rem;
 `;
 
 const LeftColumn = styled.aside`
     grid-column-start: 1;
     padding: 2rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
 `;
 
 const Name = styled.h1`
     margin: 0;
     font-size: 3.5rem;
-    font-style: italic;
-    text-transform: uppercase;
-    display: flex;
-    flex-direction: column;
-    line-height: 0.9;
 `;
 
 const Footer = styled.footer`

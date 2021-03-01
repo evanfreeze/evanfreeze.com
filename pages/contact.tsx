@@ -5,7 +5,7 @@ function Contact() {
     return (
         <>
             <Head>
-                <title>EF • Contact</title>
+                <title>Contact</title>
             </Head>
             <h1>Contact</h1>
             <p>

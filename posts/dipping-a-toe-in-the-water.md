@@ -1,5 +1,6 @@
 ---
 title: Dipping a Toe in the Water
+subtitle: I'm building an iOS app
 date: February 28, 2021
 ---
 
