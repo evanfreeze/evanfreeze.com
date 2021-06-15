@@ -89,7 +89,6 @@ function MyApp({ Component, pageProps }) {
                 <NavContainer>
                     <Name>EF</Name>
                     <Navigation />
-                    
                 </NavContainer>
             )}
             <MainContent>
@@ -143,10 +142,10 @@ const MainContent = styled.main`
     }
 `;
 
-const NavContainer = styled.aside`
+const NavContainer = styled.header`
     padding: 2rem;
     display: flex;
-    align-items: baseline;
+    align-items: center;
     justify-content: space-between;
 
 `;

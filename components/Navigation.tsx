@@ -16,13 +16,11 @@ function Navigation() {
 }
 
 const Nav = styled.nav`
-    margin: 1.5rem 0.4rem;
     display: flex;
     justify-content: flex-end;
     gap: 2rem;
 
     a {
-        margin-bottom: 0.7rem;
         text-decoration: none;
         color: var(--text-secondary-light);
         font-size: 1.1rem;
