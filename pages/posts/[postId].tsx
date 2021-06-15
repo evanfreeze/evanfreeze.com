@@ -25,9 +25,13 @@ function Post({ post }) {
 
 const Date = styled.h2`
     font-size: 0.85rem;
-    color: rgba(0, 0, 0, 0.6);
+    color: var(--text-tertiary-light);
     font-weight: 300;
     margin-bottom: 2rem;
+
+    @media (prefers-color-scheme: dark) {
+        color: var(--text-tertiary-dark);
+    }
 `;
 
 const Article = styled.article`
@@ -36,12 +40,40 @@ const Article = styled.article`
     p {
         line-height: 1.7;
         letter-spacing: 0.02rem;
+
+        @media (prefers-color-scheme: dark) {
+            color: var(--text-secondary-dark);
+        }
     }
 
     pre {
         padding: 1rem;
         background: rgba(80, 50, 50, 0.1);
         border-radius: 0.5rem;
+    }
+
+    a {
+        color: var(--text-secondary-light);
+
+        :visited {
+            color: var(--text-secondary-light);
+        }
+        :hover {
+            text-decoration: underline;
+            color: var(--text-primary-light);
+        }
+
+        @media (prefers-color-scheme: dark) {
+            color: var(--text-tertiary-dark);
+
+            :visited {
+                color: var(--text-tertiary-dark);
+            }
+            :hover {
+                text-decoration: underline;
+                color: var(--text-primary-dark);
+            }
+        }
     }
 `;
 

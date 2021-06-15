@@ -18,20 +18,34 @@ function Navigation() {
 const Nav = styled.nav`
     margin: 1.5rem 0.4rem;
     display: flex;
-    flex-direction: column;
+    justify-content: flex-end;
+    gap: 2rem;
 
     a {
         margin-bottom: 0.7rem;
         text-decoration: none;
-        color: rgba(0, 0, 0, 0.6);
+        color: var(--text-secondary-light);
         font-size: 1.1rem;
 
         :visited {
-            color: rgba(0, 0, 0, 0.6);
+            color: var(--text-secondary-light);
         }
 
         :hover {
             text-decoration: underline;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            color: var(--text-secondary-dark);
+    
+            :visited {
+                color: var(--text-secondary-dark);
+            }
+    
+            :hover {
+                text-decoration: underline;
+                color: var(--text-primary-dark);
+            }
         }
     }
 `;

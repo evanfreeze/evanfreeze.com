@@ -63,20 +63,32 @@ const Title = styled.h1`
 const Subtitle = styled.h2`
     font-size: 0.9rem;
     margin: 0;
-    opacity: 0.45;
+    color: var(--text-secondary-light);
+
+    @media (prefers-color-scheme: dark) {
+        color: var(--text-secondary-dark);
+    }
 `;
 
 const SocialIconLink = styled.a`
     text-decoration: none;
-    color: rgba(0, 0, 0, 0.35);
+    color: var(--text-tertiary-light);
     margin: 0 0.5rem;
 
+    svg {
+        fill: var(--text-tertiary-light);
+
+        :hover {
+            fill: var(--text-primary-light);
+        }
+    }
+
     :visited {
-        color: rgba(0, 0, 0, 0.35);
+        color: var(--text-tertiary-light)
     }
 
     :hover {
-        color: black;
+        color: var(--text-primary-light);
     }
 
     :first-of-type {
@@ -90,6 +102,26 @@ const SocialIconLink = styled.a`
     i {
         color: inherit;
         transition: color 0.5s ease-in-out;
+    }
+
+    @media (prefers-color-scheme: dark) {
+        color: var(--text-secondary-dark);
+
+        :visited {
+            var(--text-secondary-dark);
+        }
+
+        :hover {
+            color: var(--text-primary-light);
+        }
+
+        svg {
+            fill: var(--text-tertiary-dark);
+    
+            :hover {
+                fill: var(--text-primary-dark);
+            }
+        }
     }
 `;
 

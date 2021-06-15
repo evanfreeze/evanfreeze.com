@@ -36,16 +36,26 @@ const StyledPostLink = styled.li`
         margin: 0;
         margin-top: 0.3rem;
         font-size: 0.95rem;
-        color: rgba(0, 0, 0, 0.6);
+        color: var(--text-secondary-light);
+
+        @media (prefers-color-scheme: dark) {
+            color: var(--text-secondary-dark);
+        }
     }
 
     span {
         display: block;
         margin-top: 1rem;
         font-size: 0.8rem;
-        color: rgba(0, 0, 0, 0.6);
+        color: var(--text-secondary-light);
         font-weight: 300;
+        
+        @media (prefers-color-scheme: dark) {
+            color: var(--text-secondary-dark);
+        }
     }
+
+    
 `;
 
 function PostList({ postList }) {

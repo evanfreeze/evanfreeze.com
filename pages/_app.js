@@ -4,12 +4,25 @@ import Head from 'next/head';
 import { useRouter } from 'next/router';
 import Navigation from '../components/Navigation';
 
+const lightBg = 'hsl(0, 100%, 100%)';
+const darkBg = 'hsl(220, 20%, 20%)';
+
 const GlobalStyle = createGlobalStyle`
+    :root {
+        --text-primary-light: hsl(220, 20%, 10%);
+        --text-secondary-light: hsl(220, 20%, 40%);
+        --text-tertiary-light: hsl(220, 20%, 50%);
+        --text-primary-dark: hsl(220, 10%, 90%);
+        --text-secondary-dark: hsl(220, 10%, 60%);
+        --text-tertiary-dark: hsl(220, 10%, 50%);
+    }
+
     html {
         font-family: sans-serif;
-        color: rgba(0, 0, 0, 0.6);
+        color: var(--text-primary-light);
         margin: 0;
         padding: 0;
+        background-color: ${lightBg};
     }
 
     body {
@@ -23,12 +36,31 @@ const GlobalStyle = createGlobalStyle`
     h4,
     h5,
     h6 {
-        color: rgba(0, 0, 0, 0.8);
+        color: var(--text-primary-light);
     }
 
     a {
-        color: #0f7abc;
+        color: var(--text-secondary-light);
         text-decoration: none;
+    }
+
+    @media (prefers-color-scheme: dark) {
+        html {
+            background-color: ${darkBg};   
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            color: var(--text-primary-dark);
+        }
+
+        footer * {
+            color: var(--text-tertiary-dark);
+        }
     }
 
 `;
@@ -50,51 +82,85 @@ function MyApp({ Component, pageProps }) {
                 <link rel="manifest" href="/site.webmanifest" />
                 <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#000000" />
                 <meta name="msapplication-TileColor" content="#000000" />
-                <meta name="theme-color" content="#ffffff" />
+                <meta name="theme-color" content={lightBg} media="(prefers-color-scheme: light)" />
+                <meta name="theme-color" content={darkBg} media="(prefers-color-scheme: dark)" />
             </Head>
             {router.asPath !== '/' && (
-                <LeftColumn>
+                <NavContainer>
                     <Name>EF</Name>
                     <Navigation />
-                    <Footer>
-                        <span>Copyright © 2019 – 2021 • Evan Freeze</span>
-                    </Footer>
-                </LeftColumn>
+                    
+                </NavContainer>
             )}
-            <CenterColumn>
+            <MainContent>
                 <Component {...pageProps} />
-            </CenterColumn>
+                <Footer>
+                    <span>Copyright © 2019 – {new Date().getFullYear()} • Evan Freeze</span>
+                </Footer>
+            </ MainContent>
         </AppLayout>
     );
 }
 
 const AppLayout = styled.div`
-    display: grid;
-    grid-template-columns: 1fr 680px 1fr;
-    height: 100vh;
+    
 `;
 
-const CenterColumn = styled.main`
+const MainContent = styled.main`
     grid-column-start: 2;
     overflow: auto;
     padding: 2rem;
+    color: var(--text-primary-light);
+
+    a {
+        color: var(--text-secondary-light);
+
+        :visited: {
+            var(--text-secondary-light);
+        }
+
+        :hover {
+            var(--text-primary-light);
+            text-decoration: underline;
+        }
+    }
+
+    @media (prefers-color-scheme: dark) {
+        color: var(--text-secondary-dark);
+
+        a {
+            color: var(--text-tertiary-dark);
+
+            :visited {
+                var(--text-tertiary-dark);
+            }
+
+            :hover {
+                var(--text-primary-dark);
+                text-decoration: underline;
+            }
+        }
+    }
 `;
 
-const LeftColumn = styled.aside`
-    grid-column-start: 1;
+const NavContainer = styled.aside`
     padding: 2rem;
-    display: grid;
-    grid-template-rows: auto 1fr auto;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+
 `;
 
 const Name = styled.h1`
     margin: 0;
-    font-size: 3.5rem;
+    font-size: 2rem;
 `;
 
-const Footer = styled.footer`
+const Footer = styled.footer`    
+    position: fixed;
+    bottom: 1rem;
     font-size: 0.7rem;
-    color: rgba(0, 0, 0, 0.4);
+    color: var(--text-tertiary-light);
 `;
 
 export default MyApp;
