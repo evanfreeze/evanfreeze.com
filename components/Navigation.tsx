@@ -18,19 +18,24 @@ function Navigation() {
 const Nav = styled.nav`
     display: flex;
     justify-content: flex-end;
-    gap: 2rem;
+    gap: 1rem;
 
     a {
         text-decoration: none;
         color: var(--text-secondary-light);
-        font-size: 1.1rem;
+        font-size: 0.85rem;
+        font-weight: bold;
+        text-transform: uppercase;
+        padding: 0.5rem 0.75rem;
 
         :visited {
             color: var(--text-secondary-light);
         }
 
         :hover {
-            text-decoration: underline;
+            border-radius: 0.5rem;
+            text-decoration-color: var(--tint-color);
+            background: hsla(0, 0%, 0%, 0.1);
         }
 
         @media (prefers-color-scheme: dark) {
@@ -41,8 +46,8 @@ const Nav = styled.nav`
             }
     
             :hover {
-                text-decoration: underline;
                 color: var(--text-primary-dark);
+                background: hsla(0, 0%, 100%, 0.1);
             }
         }
     }
