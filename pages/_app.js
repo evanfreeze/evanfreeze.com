@@ -85,6 +85,11 @@ function MyApp({ Component, pageProps }) {
                 <meta name="msapplication-TileColor" content="#000000" />
                 <meta name="theme-color" content={lightBg} media="(prefers-color-scheme: light)" />
                 <meta name="theme-color" content={darkBg} media="(prefers-color-scheme: dark)" />
+                <script
+                    data-goatcounter="https://evanfreeze.goatcounter.com/count"
+                    async
+                    src="//gc.zgo.at/count.js"
+                ></script>
             </Head>
             {router.asPath !== '/' && (
                 <NavContainer>
@@ -97,14 +102,12 @@ function MyApp({ Component, pageProps }) {
                 <Footer>
                     <span>Copyright © 2019 – {new Date().getFullYear()} • Evan Freeze</span>
                 </Footer>
-            </ MainContent>
+            </MainContent>
         </AppLayout>
     );
 }
 
-const AppLayout = styled.div`
-    
-`;
+const AppLayout = styled.div``;
 
 const MainContent = styled.main`
     grid-column-start: 2;
@@ -148,7 +151,6 @@ const NavContainer = styled.header`
     display: flex;
     align-items: center;
     justify-content: space-between;
-
 `;
 
 const Name = styled.h1`
@@ -156,7 +158,7 @@ const Name = styled.h1`
     font-size: 2rem;
 `;
 
-const Footer = styled.footer`    
+const Footer = styled.footer`
     position: fixed;
     bottom: 1rem;
     font-size: 0.7rem;
