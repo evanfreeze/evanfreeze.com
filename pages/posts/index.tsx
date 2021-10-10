@@ -6,7 +6,14 @@ import styled from 'styled-components';
 
 import Title from '../../components/Title';
 
-function PostListItem({ title, subtitle, date, path }) {
+interface Post {
+    path: string;
+    title: string;
+    subtitle: string;
+    date: string;
+}
+
+function PostListItem({ title, subtitle, date, path }: Post) {
     return (
         <StyledPostLink>
             <Link href={path}>
@@ -58,6 +65,10 @@ const StyledPostLink = styled.li`
     
 `;
 
+const PostListWrapper = styled.div`
+    width: 100%
+`
+
 function PostList({ postList }) {
     return (
         <>
@@ -65,15 +76,17 @@ function PostList({ postList }) {
                 <title>Posts</title>
             </Head>
             <Title>Posts</Title>
-            {postList.map(post => (
-                <PostListItem
-                    key={post.path}
-                    title={post.title}
-                    date={post.date}
-                    path={post.path}
-                    subtitle={post.subtitle}
-                />
-            ))}
+            <PostListWrapper>
+                {postList.map(post => (
+                    <PostListItem
+                        key={post.path}
+                        title={post.title}
+                        date={post.date}
+                        path={post.path}
+                        subtitle={post.subtitle}
+                    />
+                ))}
+            </PostListWrapper>
         </>
     );
 }
@@ -101,11 +114,11 @@ export async function getStaticProps() {
         };
     });
 
-    const postList = await Promise.all(promises);
+    const postList: Post[] = await Promise.all(promises);
 
     return {
         props: {
-            postList
+            postList: postList.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
         }
     };
 }

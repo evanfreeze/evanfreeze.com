@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled, { createGlobalStyle } from 'styled-components';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import Navigation from '../components/Navigation';
+import { getRandomColor } from '../helpers'
 
 const lightBg = 'hsl(0, 100%, 100%)';
 const darkBg = 'hsl(220, 20%, 20%)';
@@ -15,7 +16,7 @@ const GlobalStyle = createGlobalStyle`
         --text-primary-dark: hsl(220, 10%, 90%);
         --text-secondary-dark: hsl(220, 10%, 60%);
         --text-tertiary-dark: hsl(220, 10%, 50%);
-        --tint-color: #ff00bf;
+        --tint-color: #10aeba;
     }
 
     html {
@@ -45,6 +46,10 @@ const GlobalStyle = createGlobalStyle`
         text-decoration: none;
     }
 
+    p {
+        line-height: 1.75rem;
+    }
+
     @media (prefers-color-scheme: dark) {
         html {
             background-color: ${darkBg};   
@@ -61,6 +66,11 @@ const GlobalStyle = createGlobalStyle`
 
         footer * {
             color: var(--text-tertiary-dark);
+        }
+
+        a {
+            color: var(--text-secondary-dark);
+            text-decoration: none;
         }
     }
 
@@ -91,14 +101,16 @@ function MyApp({ Component, pageProps }) {
                     src="//gc.zgo.at/count.js"
                 ></script>
             </Head>
-            {router.asPath !== '/' && (
-                <NavContainer>
-                    <Name>EF</Name>
-                    <Navigation />
-                </NavContainer>
-            )}
+            <NavContainer>
+                <Name>
+                    {router.asPath !== '/' && <a href="/">EF</a>}
+                </Name>
+                <Navigation />
+            </NavContainer>
             <MainContent>
-                <Component {...pageProps} />
+                <main>
+                    <Component {...pageProps} />
+                </main>
                 <Footer>
                     <span>Copyright © 2019 – {new Date().getFullYear()} • Evan Freeze</span>
                 </Footer>
@@ -110,20 +122,24 @@ function MyApp({ Component, pageProps }) {
 const AppLayout = styled.div``;
 
 const MainContent = styled.main`
-    grid-column-start: 2;
-    overflow: auto;
     padding: 2rem;
     color: var(--text-primary-light);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 85vh;
+    max-width: 640px;
+    margin-inline: auto;
 
     a {
-        color: var(--text-secondary-light);
+        color: var(--tint-color);
 
         :visited: {
-            var(--text-secondary-light);
+            var(--tint-color);
         }
 
         :hover {
-            var(--text-primary-light);
+            var(--tint-color);
             text-decoration: underline;
         }
     }
@@ -131,18 +147,6 @@ const MainContent = styled.main`
     @media (prefers-color-scheme: dark) {
         color: var(--text-secondary-dark);
 
-        a {
-            color: var(--text-tertiary-dark);
-
-            :visited {
-                var(--text-tertiary-dark);
-            }
-
-            :hover {
-                var(--text-primary-dark);
-                text-decoration: underline;
-            }
-        }
     }
 `;
 
@@ -159,8 +163,8 @@ const Name = styled.h1`
 `;
 
 const Footer = styled.footer`
-    position: fixed;
-    bottom: 1rem;
+    margin-inline: auto;
+    padding: 1rem 0;
     font-size: 0.7rem;
     color: var(--text-tertiary-light);
 `;
