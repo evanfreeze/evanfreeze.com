@@ -17,6 +17,7 @@ const GlobalStyle = createGlobalStyle`
         --text-secondary-dark: hsl(220, 10%, 60%);
         --text-tertiary-dark: hsl(220, 10%, 50%);
         --tint-color: #10aeba;
+        --bar-color: #ff00bf;
     }
 
     html {

@@ -22,7 +22,7 @@ function ColorBar() {
         const colorInterval = setInterval(() => {
             const nextColor = getRandomColor(color);
             setColor(nextColor);
-            document.documentElement.style.setProperty('--tint-color', color);
+            document.documentElement.style.setProperty('--bar-color', color);
         }, 2000);
         return () => clearInterval(colorInterval);
     }, []);
