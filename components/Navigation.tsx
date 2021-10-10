@@ -1,16 +1,12 @@
 import React from 'react';
 import Link from 'next/link';
 import styled from 'styled-components';
-import { useRouter } from 'next/router';
 
 function Navigation() {
-    const router = useRouter();
-
     return (
         <Nav>
             <Link href="/posts">Posts</Link>
             <Link href="/about">About</Link>
-            <Link href="/contact">Contact</Link>
         </Nav>
     );
 }
@@ -19,6 +15,8 @@ const Nav = styled.nav`
     display: flex;
     justify-content: flex-end;
     gap: 1rem;
+    position: sticky;
+    top: 0;
 
     a {
         text-decoration: none;

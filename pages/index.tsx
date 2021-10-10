@@ -52,7 +52,7 @@ const LandingBox = styled.main`
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    height: 80vh;
+    height: 60vh;
 `;
 
 const Title = styled.h1`

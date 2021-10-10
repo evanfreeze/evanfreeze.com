@@ -53,26 +53,14 @@ const Article = styled.article`
     }
 
     a {
-        color: var(--text-secondary-light);
+        color: var(--tint-color);
 
         :visited {
-            color: var(--text-secondary-light);
+            color: var(--tint-color);
         }
         :hover {
             text-decoration: underline;
-            color: var(--text-primary-light);
-        }
-
-        @media (prefers-color-scheme: dark) {
-            color: var(--text-tertiary-dark);
-
-            :visited {
-                color: var(--text-tertiary-dark);
-            }
-            :hover {
-                text-decoration: underline;
-                color: var(--text-primary-dark);
-            }
+            color: var(--tint-color);
         }
     }
 `;
