@@ -1,15 +1,18 @@
-import React, { useEffect, useState } from 'react';
-import styled from 'styled-components';
 import Head from 'next/head';
-import { FaTwitter, FaInstagram, FaGithub, FaDev, FaLinkedinIn } from 'react-icons/fa';
+import { FaGithub, FaInstagram, FaLinkedinIn, FaMastodon, FaTwitter } from 'react-icons/fa';
+import styled from 'styled-components';
 
 import ColorBar from '../components/ColorBar';
-import { getRandomColor } from '../helpers';
 
 const socialLinks = [
     {
         icon: <FaTwitter />,
         href: 'https://twitter.com/evanfreeze'
+    },
+    {
+        icon: <FaMastodon />,
+        href: 'https://mastodon.social/@evanfreeze',
+        rel: 'me'
     },
     {
         icon: <FaInstagram />,
@@ -37,7 +40,12 @@ function HomePage() {
                 <ColorBar />
                 <SocialLinks>
                     {socialLinks.map(link => (
-                        <SocialIconLink href={link.href} key={link.href} target="_blank" rel="noopener noreferrer">
+                        <SocialIconLink
+                            href={link.href}
+                            key={link.href}
+                            target="_blank"
+                            rel={link.rel ?? 'noopener noreferrer'}
+                        >
                             {link.icon}
                         </SocialIconLink>
                     ))}
