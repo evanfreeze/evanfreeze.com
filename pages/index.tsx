@@ -1,18 +1,19 @@
 import Head from 'next/head';
-import { FaGithub, FaInstagram, FaLinkedinIn, FaMastodon, FaTwitter } from 'react-icons/fa';
+import { FaGithub, FaInstagram, FaLinkedinIn, FaMastodon } from 'react-icons/fa';
+import { FaThreads } from 'react-icons/fa6';
 import styled from 'styled-components';
 
 import ColorBar from '../components/ColorBar';
 
 const socialLinks = [
     {
-        icon: <FaTwitter />,
-        href: 'https://twitter.com/evanfreeze'
-    },
-    {
         icon: <FaMastodon />,
         href: 'https://mastodon.social/@evanfreeze',
         rel: 'me'
+    },
+    {
+        icon: <FaThreads />,
+        href: 'https://www.threads.net/evanfreeze'
     },
     {
         icon: <FaInstagram />,
