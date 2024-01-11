@@ -1,8 +1,11 @@
 ---
-import '../styles/global.css'
+import "../styles/global.css"
 import Navigation from "@components/Navigation.astro"
 import Footer from "@components/Footer.astro"
-let { pageTitle } = Astro.props;
+type Props = {
+  pageTitle: string
+}
+let { pageTitle } = Astro.props
 ---
 
 <html lang="en-US">
@@ -12,7 +15,10 @@ let { pageTitle } = Astro.props;
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="generator" content={Astro.generator} />
     <title>{pageTitle}</title>
-    <script data-goatcounter="https://evanfreeze.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+    <script
+      data-goatcounter="https://evanfreeze.goatcounter.com/count"
+      async
+      src="//gc.zgo.at/count.js"></script>
   </head>
   <body>
     <Navigation />
@@ -35,5 +41,4 @@ let { pageTitle } = Astro.props;
     flex-direction: column;
     justify-content: space-between;
   }
-  
 </style>

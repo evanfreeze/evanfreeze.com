@@ -1,7 +1,10 @@
 ---
-import '../styles/global.css';
-let attributes = Astro.props;
+import type { HTMLAttributes } from "astro/types"
+import "../styles/global.css"
+type Props = HTMLAttributes<"a">
+let attributes = Astro.props
 ---
+
 <a {...attributes} class="social-icon-link"><slot /></a>
 
 <style>
@@ -20,7 +23,7 @@ let attributes = Astro.props;
   }
 
   .social-icon-link svg:hover {
-    fill: var(--text-primary-light)
+    fill: var(--text-primary-light);
   }
 
   @media (prefers-color-scheme: dark) {
@@ -34,9 +37,8 @@ let attributes = Astro.props;
 
     .social-icon-link svg {
       fill: var(--text-secondary-dark);
-
     }
-    
+
     .social-icon-link svg:hover {
       fill: var(--text-primary-dark);
     }

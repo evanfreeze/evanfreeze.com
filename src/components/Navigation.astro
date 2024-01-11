@@ -1,6 +1,6 @@
 ---
-import '../styles/global.css';
-let showEF = Astro.url.pathname !== '/'
+import "../styles/global.css"
+let showEF = Astro.url.pathname !== "/"
 ---
 
 <header>
@@ -26,7 +26,7 @@ let showEF = Astro.url.pathname !== '/'
   header a {
     text-decoration: none;
   }
-  
+
   nav {
     display: flex;
     justify-content: end;
@@ -41,10 +41,9 @@ let showEF = Astro.url.pathname !== '/'
     font-weight: bold;
     text-transform: uppercase;
     padding: 8px 12px;
-
   }
   nav a:visited {
-    color: var(--text-secondary-light)
+    color: var(--text-secondary-light);
   }
 
   nav a:hover {
@@ -55,7 +54,6 @@ let showEF = Astro.url.pathname !== '/'
   @media (prefers-color-scheme: dark) {
     nav a {
       color: var(--text-secondary-dark);
-
     }
     nav a:visited {
       color: var(--text-secondary-dark);
@@ -63,7 +61,7 @@ let showEF = Astro.url.pathname !== '/'
 
     nav a:hover {
       color: var(--text-primary-dark);
-      background: hsla(0, 0%, 100%, 0.1)
+      background: hsla(0, 0%, 100%, 0.1);
     }
   }
 </style>

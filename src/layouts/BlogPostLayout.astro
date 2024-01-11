@@ -1,7 +1,7 @@
 ---
-import '../styles/global.css'
-import BaseLayout from "./BaseLayout.astro";
-let { frontmatter } = Astro.props;
+import "../styles/global.css"
+import BaseLayout from "./BaseLayout.astro"
+let { frontmatter } = Astro.props
 ---
 
 <BaseLayout pageTitle={frontmatter.title}>
@@ -23,7 +23,7 @@ let { frontmatter } = Astro.props;
 
   .all-posts-link {
     text-decoration: none;
-    color: var(--tint-color)
+    color: var(--tint-color);
   }
 
   @media (prefers-color-scheme: dark) {

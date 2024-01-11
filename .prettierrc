@@ -1,6 +1,15 @@
 {
-    "singleQuote": false,
-    "semi": false,
-    "tabWidth": 2,
-    "printWidth": 80
+  "plugins": ["prettier-plugin-astro"],
+  "overrides": [
+    {
+      "files": "*.astro",
+      "options": {
+        "parser": "astro"
+      }
+    }
+  ],
+  "singleQuote": false,
+  "semi": false,
+  "tabWidth": 2,
+  "printWidth": 80
 }
