@@ -1,0 +1,69 @@
+---
+import '../styles/global.css';
+let showEF = Astro.url.pathname !== '/'
+---
+
+<header>
+  <h1>{showEF && <a href="/">EF</a>}</h1>
+  <nav>
+    <a href="/posts">Posts</a>
+    <a href="/about">About</a>
+  </nav>
+</header>
+
+<style>
+  header {
+    padding: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  h1 {
+    margin: 0;
+  }
+
+  header a {
+    text-decoration: none;
+  }
+  
+  nav {
+    display: flex;
+    justify-content: end;
+    gap: 16px;
+    position: sticky;
+    top: 0;
+  }
+
+  nav a {
+    color: var(--text-secondary-light);
+    font-size: 0.85rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    padding: 8px 12px;
+
+  }
+  nav a:visited {
+    color: var(--text-secondary-light)
+  }
+
+  nav a:hover {
+    border-radius: 8px;
+    background: hsla(0, 0%, 0%, 0.1);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    nav a {
+      color: var(--text-secondary-dark);
+
+    }
+    nav a:visited {
+      color: var(--text-secondary-dark);
+    }
+
+    nav a:hover {
+      color: var(--text-primary-dark);
+      background: hsla(0, 0%, 100%, 0.1)
+    }
+  }
+</style>

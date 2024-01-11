@@ -1,0 +1,44 @@
+---
+import '../styles/global.css';
+let attributes = Astro.props;
+---
+<a {...attributes} class="social-icon-link"><slot /></a>
+
+<style>
+  .social-icon-link {
+    text-decoration: none;
+    color: var(--text-tertiary-light);
+  }
+
+  .social-icon-link:hover {
+    color: var(--text-primary-light);
+  }
+
+  .social-icon-link svg {
+    fill: var(--text-tertiary-light);
+    transition: color 0.5s ease-in-out;
+  }
+
+  .social-icon-link svg:hover {
+    fill: var(--text-primary-light)
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .social-icon-link {
+      color: var(--text-secondary-dark);
+    }
+
+    .social-icon-link:hover {
+      color: var(--text-primary-dark);
+    }
+
+    .social-icon-link svg {
+      fill: var(--text-secondary-dark);
+
+    }
+    
+    .social-icon-link svg:hover {
+      fill: var(--text-primary-dark);
+    }
+  }
+</style>

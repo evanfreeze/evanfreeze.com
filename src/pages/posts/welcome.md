@@ -1,7 +1,8 @@
 ---
+layout: ../../layouts/BlogPostLayout.astro
 title: Welcome
-subtitle: Here goes nothin'
-date: February 28, 2021
+description: Here goes nothin'
+pubDate: February 28, 2021
 ---
 
 Hey there 👋🏻

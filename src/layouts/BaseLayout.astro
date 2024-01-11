@@ -1,0 +1,39 @@
+---
+import '../styles/global.css'
+import Navigation from "../components/Navigation.astro"
+import Footer from "../components/Footer.astro"
+let { pageTitle } = Astro.props;
+---
+
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{pageTitle}</title>
+    <script data-goatcounter="https://evanfreeze.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+  </head>
+  <body>
+    <Navigation />
+    <main>
+      <section>
+        <slot />
+      </section>
+      <Footer />
+    </main>
+  </body>
+</html>
+
+<style>
+  main {
+    min-height: 85vh;
+    max-width: 640px;
+    margin-inline: auto;
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+</style>

@@ -1,7 +1,8 @@
 ---
+layout: ../../layouts/BlogPostLayout.astro
 title: Dipping a Toe in the Water
-subtitle: I'm building an iOS app
-date: February 28, 2021
+description: I'm building an iOS app
+pubDate: February 28, 2021
 ---
 
 I'm building an iOS app. The code is almost ready to ship, but I'm feeling overwhelmed with everything else needed to actually launch it.

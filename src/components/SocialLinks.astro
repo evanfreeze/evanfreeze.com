@@ -1,0 +1,40 @@
+---
+import SocialIconLink from "./SocialIconLink.astro"
+import Mastodon from "./icons/Mastodon.astro"
+import Threads from "./icons/Threads.astro"
+import Instagram from "./icons/Instagram.astro"
+import Github from "./icons/Github.astro"
+import LinkedIn from "./icons/LinkedIn.astro"
+---
+<ul>
+  <li>
+    <SocialIconLink href="https://mastodon.social/@evanfreeze" rel="me"><Mastodon /></SocialIconLink>
+  </li>
+  <li>
+    <SocialIconLink href="https://www.threads.net/evanfreeze"><Threads /></SocialIconLink>
+  </li>
+  <li>
+    <SocialIconLink href="https://www.instagram.com/evanfreeze/"><Instagram /></SocialIconLink>
+  </li>
+  <li>
+    <SocialIconLink href="https://github.com/evanfreeze"><Github /></SocialIconLink>
+  </li>
+  <li>
+    <SocialIconLink href="https://www.linkedin.com/in/evanfreeze/"><LinkedIn /></SocialIconLink>
+  </li>
+</ul>
+
+<style>
+  ul {
+    display: flex;
+    list-style: none;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    gap: 16px;
+  }
+
+  ul a {
+    text-decoration: none;
+  }
+</style>
