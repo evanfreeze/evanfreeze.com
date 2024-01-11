@@ -1,0 +1,42 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro"
+import SocialLinks from "@components/SocialLinks.astro"
+import ColorBar from "@components/ColorBar"
+---
+
+<BaseLayout pageTitle="Evan Freeze">
+  <div class="wrapper">
+    <h1>Evan Freeze</h1>
+    <h2>Software Engineer • Nashville, TN</h2>
+    <!-- color bar here if we want to keep it -->
+    <ColorBar client:load />
+    <SocialLinks />
+  </div>
+</BaseLayout>
+
+<style>
+  .wrapper {
+    height: 60vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  h1 {
+    font-size: 2rem;
+    margin-bottom: 6px;
+  }
+
+  h2 {
+    font-size: 0.9rem;
+    margin: 0;
+    color: var(--text-secondary-light);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    h2 {
+      color: var(--text-secondary-dark);
+    }
+  }
+</style>

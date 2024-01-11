@@ -1,0 +1,102 @@
+:root {
+  --text-primary-light: hsl(220, 20%, 10%);
+  --text-secondary-light: hsl(220, 20%, 40%);
+  --text-tertiary-light: hsl(220, 20%, 50%);
+  --text-primary-dark: hsl(220, 10%, 90%);
+  --text-secondary-dark: hsl(220, 10%, 60%);
+  --text-tertiary-dark: hsl(220, 10%, 50%);
+  /* --tint-color: #10aeba; */
+  --tint-color: #0e753a;
+  --bar-color: #ff00bf;
+  --light-bg: hsl(0, 100%, 100%);
+  --dark-bg: hsl(220, 20%, 20%);
+}
+
+html {
+  font-family: sans-serif;
+  color: var(--text-primary-light);
+  margin: 0;
+  padding: 0;
+  background-color: var(--light-bg);
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--text-primary-light);
+}
+
+a {
+  color: var(--text-secondary-light);
+}
+
+p {
+  line-height: 1.75rem;
+}
+
+/* Post Styles */
+
+article {
+  padding-bottom: 96px;
+}
+
+article p {
+  line-height: 1.7;
+  letter-spacing: 0.02rem;
+}
+
+article pre {
+  padding: 1rem;
+  background: rgba(80, 50, 50, 0.1);
+  border-radius: 0.5rem;
+}
+
+p a {
+  color: var(--tint-color);
+}
+
+p a:visited {
+  color: var(--tint-color);
+}
+
+p a:hover {
+  text-decoration: underline;
+  color: var(--tint-color);
+}
+
+@media (prefers-color-scheme: dark) {
+  html {
+    background-color: var(--dark-bg);
+    color: var(--text-primary-dark);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: var(--text-primary-dark);
+  }
+
+  footer * {
+    color: var(--text-tertiary-dark);
+  }
+
+  a {
+    color: var(--text-secondary-dark);
+  }
+
+  /* Post Styles */
+  article p {
+    color: var(--text-secondary-dark);
+  }
+}

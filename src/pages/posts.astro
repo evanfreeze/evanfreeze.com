@@ -1,0 +1,66 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro"
+let allPosts = await Astro.glob("./posts/*.md")
+---
+
+<BaseLayout pageTitle="Posts">
+  <h1>Posts</h1>
+  {
+    allPosts
+      .sort(
+        (p1, p2) =>
+          new Date(p2.frontmatter.pubDate).getTime() -
+          new Date(p1.frontmatter.pubDate).getTime(),
+      )
+      .map((post) => (
+        <li class="post-list-item">
+          <a href={post.url}>
+            <h3>{post.frontmatter.title}</h3>
+          </a>
+          <p>{post.frontmatter.description}</p>
+          <span>{post.frontmatter.pubDate}</span>
+        </li>
+      ))
+  }
+</BaseLayout>
+
+<style>
+  .post-list-item {
+    display: block;
+    margin: 3rem 0;
+  }
+
+  .post-list-item a {
+    text-decoration: underline;
+    text-decoration-color: var(--tint-color);
+  }
+
+  .post-list-item h3 {
+    margin: 0;
+  }
+
+  .post-list-item p {
+    margin: 0;
+    margin-top: 0.3rem;
+    font-size: 0.95rem;
+    color: var(--text-secondary-light);
+  }
+
+  .post-list-item span {
+    display: block;
+    margin-top: 1rem;
+    font-size: 0.8rem;
+    color: var(--text-secondary-light);
+    font-weight: 300;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .post-list-item p {
+      color: var(--text-secondary-dark);
+    }
+
+    .post-list-item span {
+      color: var(--text-secondary-dark);
+    }
+  }
+</style>

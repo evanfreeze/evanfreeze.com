@@ -1,7 +1,8 @@
 ---
+layout: ../../layouts/BlogPostLayout.astro
 title: First Impressions of Remix
-subtitle: It's cool
-date: November 28, 2021
+description: It's cool
+pubDate: November 28, 2021
 ---
 
 So I built a web version of my forever-still-in-beta iOS app, [Read Rate](https://www.readrate.app), using [Remix](https://remix.run/) over the weekend.
