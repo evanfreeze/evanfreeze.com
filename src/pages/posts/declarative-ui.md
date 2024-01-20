@@ -13,4 +13,4 @@ I dig it. It makes intuitive sense to my brain and I build apps and websites sig
 
 There's been a lot of hand-wringing about React lately (rightly so) but I think it's easy to lose sight of what it brought us — this entire declarative paradigm. It's been fascinating to watch Apple and whoever runs Android (Google, I guess?) move in a more React-y direction with their app development frameworks. It's great to see them take different approaches to solving the various problems that come from this way of building apps (learning lessons from React's rough edges). It's fun to see the optimizations you can make when you have a compiler to work with. I can why Svetle chose a compiler and why the React team is following them down that path.
 
-The bottom line for me is I have a lot more fun working this way. I'm excited to see how the next generation of frameworks build on these foundations.
+The bottom line for me: I have a lot more fun working this way. I'm excited to see how the next generation of frameworks build on these foundations.
