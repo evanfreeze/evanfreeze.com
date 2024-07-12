@@ -73,6 +73,10 @@ p a:hover {
 }
 
 @media (prefers-color-scheme: dark) {
+  :root {
+    --tint-color: #23c86a;
+  }
+
   html {
     background-color: var(--dark-bg);
     color: var(--text-primary-dark);
