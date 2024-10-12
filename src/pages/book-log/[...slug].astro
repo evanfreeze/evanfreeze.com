@@ -29,8 +29,11 @@ const readingDuration = (() => {
 })()
 ---
 
-<BaseLayout pageTitle={book.data.title}>
-  <h1>{book.data.title} <span>by {book.data.author}</span></h1>
+<BaseLayout pageTitle={`Notes on "${book.data.title}" • Evan Freeze`}>
+  <h1>
+    {book.data.title}
+    <span>by {book.data.author}</span>
+  </h1>
   <p class="subtitle">{readingDuration}</p>
   <article>
     <Content />
@@ -39,7 +42,7 @@ const readingDuration = (() => {
       {book.data.tags?.map((tag) => <div class="tag">{tag}</div>)}
     </div>
   </article>
-  <a class="all-books-link" href="/books">← All Books</a>
+  <a class="all-books-link" href="/book-log">← All Books</a>
 </BaseLayout>
 
 <style>
@@ -48,12 +51,13 @@ const readingDuration = (() => {
 
     span {
       font-weight: normal;
+      color: var(--text-secondary-light);
     }
   }
 
   .subtitle {
     font-size: 0.9rem;
-    color: var(--text-tertiary-light);
+    color: var(--text-secondary-light);
     font-weight: 300;
     margin-bottom: 32px;
   }
@@ -79,8 +83,12 @@ const readingDuration = (() => {
   }
 
   @media (prefers-color-scheme: dark) {
-    h2 {
-      color: var(--text-tertiary-dark);
+    .subtitle {
+      color: var(--text-secondary-dark);
+    }
+
+    .tag {
+      background-color: var(--text-secondary-light);
     }
   }
 </style>

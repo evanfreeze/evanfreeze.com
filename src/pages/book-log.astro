@@ -41,8 +41,8 @@ const booksToDisplay = books
   }, {})
 ---
 
-<BaseLayout pageTitle="Posts">
-  <h1>Books</h1>
+<BaseLayout pageTitle="Book Log • Evan Freeze">
+  <h1>Book Log</h1>
   {
     Object.keys(booksToDisplay).map((year) => (
       <details class="years" open>
@@ -57,11 +57,11 @@ const booksToDisplay = books
             <ul>
               {booksToDisplay[year].books[month].map((book) => (
                 <li>
-                  <a href={`/books/${book.slug}`}>
-                    <h3>
+                  <h3>
+                    <a href={`/book-log/${book.slug}`}>
                       {book.data.title} <span>by {book.data.author}</span>
-                    </h3>
-                  </a>
+                    </a>
+                  </h3>
                 </li>
               ))}
             </ul>
@@ -70,12 +70,28 @@ const booksToDisplay = books
       </details>
     ))
   }
+  <div class="disclaimer">
+    <p>
+      This list is incomplete. I'm working to get all of the 2024 data in here,
+      at least.
+    </p>
+    <p>More to come!</p>
+  </div>
 </BaseLayout>
 
 <style>
   h3 {
-    span {
-      font-weight: normal;
+    color: var(--text-primary-light);
+    font-size: 1rem;
+
+    a {
+      color: currentColor;
+      text-decoration-color: var(--tint-color);
+
+      span {
+        font-weight: normal;
+        color: var(--text-secondary-light);
+      }
     }
   }
 
@@ -89,7 +105,7 @@ const booksToDisplay = books
     cursor: default;
 
     span {
-      color: rgba(0, 0, 0, 0.4);
+      opacity: 0.5;
     }
   }
 
@@ -100,5 +116,38 @@ const booksToDisplay = books
   ul {
     margin-left: 12px;
     margin-bottom: 24px;
+  }
+
+  .disclaimer {
+    margin-top: 48px;
+    background-color: var(--text-primary-dark);
+    padding: 16px;
+    border-radius: 12px;
+    font-size: 0.9rem;
+    line-height: 1;
+    text-align: center;
+    font-style: italic;
+
+    p {
+      margin: 0;
+    }
+  }
+
+  @media (prefers-color-scheme: dark) {
+    h3 {
+      color: var(--text-primary-dark);
+
+      a {
+        color: currentColor;
+
+        span {
+          var(--text-secondary-dark);
+        }
+      }
+    }
+
+    .disclaimer {
+      background-color: var(--text-secondary-light);
+    }
   }
 </style>

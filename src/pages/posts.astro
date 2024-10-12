@@ -5,7 +5,7 @@ import { getCollection } from "astro:content"
 const allPosts = await getCollection("posts")
 ---
 
-<BaseLayout pageTitle="Posts">
+<BaseLayout pageTitle="Posts • Evan Freeze">
   <h1>Posts</h1>
   {
     allPosts
@@ -16,9 +16,9 @@ const allPosts = await getCollection("posts")
       )
       .map((post) => (
         <li class="post-list-item">
-          <a href={`/posts/${post.slug}`}>
-            <h3>{post.data.title}</h3>
-          </a>
+          <h3>
+            <a href={`/posts/${post.slug}`}>{post.data.title}</a>
+          </h3>
           <p>{post.data.description}</p>
           <span>{post.data.pubDate}</span>
         </li>
@@ -35,10 +35,12 @@ const allPosts = await getCollection("posts")
   .post-list-item a {
     text-decoration: underline;
     text-decoration-color: var(--tint-color);
+    color: currentColor;
   }
 
   .post-list-item h3 {
     margin: 0;
+    color: var(--text-primary-light);
   }
 
   .post-list-item p {
@@ -63,6 +65,10 @@ const allPosts = await getCollection("posts")
 
     .post-list-item span {
       color: var(--text-secondary-dark);
+    }
+
+    .post-list-item h3 {
+      color: var(--text-primary-dark);
     }
   }
 </style>
