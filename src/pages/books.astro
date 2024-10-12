@@ -1,0 +1,104 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro"
+import { getCollection } from "astro:content"
+
+const books = await getCollection("books")
+
+const MONTHS = [
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
+]
+
+const booksToDisplay = books
+  .sort(
+    (b1, b2) =>
+      new Date(b2.data.finishedReading).getTime() -
+      new Date(b1.data.finishedReading).getTime(),
+  )
+  .reduce((finished, book) => {
+    const dateFinished = new Date(book.data.finishedReading)
+    const yearFinished = dateFinished.getFullYear()
+    const monthFinished = MONTHS[dateFinished.getMonth()]
+    if (!finished[yearFinished]) {
+      finished[yearFinished] = { total: 0, books: {} }
+    }
+    if (!finished[yearFinished].books[monthFinished]) {
+      finished[yearFinished].books[monthFinished] = []
+    }
+    finished[yearFinished].books[monthFinished].push(book)
+    finished[yearFinished].total += 1
+    return finished
+  }, {})
+---
+
+<BaseLayout pageTitle="Posts">
+  <h1>Books</h1>
+  {
+    Object.keys(booksToDisplay).map((year) => (
+      <details class="years" open>
+        <summary>
+          {year} <span>({booksToDisplay[year].total})</span>
+        </summary>
+        {Object.keys(booksToDisplay[year].books).map((month) => (
+          <details class="months" open>
+            <summary>
+              {month} <span>({booksToDisplay[year].books[month].length})</span>
+            </summary>
+            <ul>
+              {booksToDisplay[year].books[month].map((book) => (
+                <li>
+                  <a href={`/books/${book.slug}`}>
+                    <h3>
+                      {book.data.title} <span>by {book.data.author}</span>
+                    </h3>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </details>
+        ))}
+      </details>
+    ))
+  }
+</BaseLayout>
+
+<style>
+  h3 {
+    span {
+      font-weight: normal;
+    }
+  }
+
+  details {
+    margin: 16px 0;
+  }
+
+  summary {
+    font-size: 1.25rem;
+    margin: 8px 0;
+    cursor: default;
+
+    span {
+      color: rgba(0, 0, 0, 0.4);
+    }
+  }
+
+  .months {
+    margin-left: 16px;
+  }
+
+  ul {
+    margin-left: 12px;
+    margin-bottom: 24px;
+  }
+</style>
