@@ -1,0 +1,94 @@
+---
+import "../../styles/global.css"
+import { getCollection, type CollectionEntry } from "astro:content"
+import BaseLayout from "../../layouts/BaseLayout.astro"
+
+export async function getStaticPaths() {
+  const allBooks = await getCollection("books")
+  return allBooks.map((book) => ({
+    params: { slug: book.slug },
+    props: { book },
+  }))
+}
+
+interface Props {
+  book: CollectionEntry<"book">
+  readingDuration: string
+}
+
+const { book } = Astro.props
+const { Content } = await book.render()
+const readingDuration = (() => {
+  const start = new Date(book.data.startedReading).toDateString()
+
+  if (book.data.finishedReading) {
+    return `Read from ${start} to ${new Date(book.data.finishedReading).toDateString()}`
+  } else {
+    return `Started reading on ${start}`
+  }
+})()
+---
+
+<BaseLayout pageTitle={`Notes on "${book.data.title}" • Evan Freeze`}>
+  <h1>
+    {book.data.title}
+    <span>by {book.data.author}</span>
+  </h1>
+  <p class="subtitle">{readingDuration}</p>
+  <article>
+    <Content />
+    <div class="tags">
+      <div class="tag">{book.data.medium} book</div>
+      {book.data.tags?.map((tag) => <div class="tag">{tag}</div>)}
+    </div>
+  </article>
+  <a class="all-books-link" href="/book-log">← All Books</a>
+</BaseLayout>
+
+<style>
+  h1 {
+    margin-bottom: 0;
+
+    span {
+      font-weight: normal;
+      color: var(--text-secondary-light);
+    }
+  }
+
+  .subtitle {
+    font-size: 0.9rem;
+    color: var(--text-secondary-light);
+    font-weight: 300;
+    margin-bottom: 32px;
+  }
+
+  .tags {
+    margin-top: 36px;
+    display: flex;
+    gap: 6px;
+  }
+
+  .tag {
+    font-style: italic;
+    font-size: 0.8rem;
+    padding: 4px 8px;
+    border-radius: 4px;
+    background-color: rgba(0, 0, 0, 0.1);
+    max-width: fit-content;
+  }
+
+  .all-books-link {
+    text-decoration: none;
+    color: var(--tint-color);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .subtitle {
+      color: var(--text-secondary-dark);
+    }
+
+    .tag {
+      background-color: var(--text-secondary-light);
+    }
+  }
+</style>

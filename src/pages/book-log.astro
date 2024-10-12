@@ -1,0 +1,153 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro"
+import { getCollection } from "astro:content"
+
+const books = await getCollection("books")
+
+const MONTHS = [
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
+]
+
+const booksToDisplay = books
+  .sort(
+    (b1, b2) =>
+      new Date(b2.data.finishedReading).getTime() -
+      new Date(b1.data.finishedReading).getTime(),
+  )
+  .reduce((finished, book) => {
+    const dateFinished = new Date(book.data.finishedReading)
+    const yearFinished = dateFinished.getFullYear()
+    const monthFinished = MONTHS[dateFinished.getMonth()]
+    if (!finished[yearFinished]) {
+      finished[yearFinished] = { total: 0, books: {} }
+    }
+    if (!finished[yearFinished].books[monthFinished]) {
+      finished[yearFinished].books[monthFinished] = []
+    }
+    finished[yearFinished].books[monthFinished].push(book)
+    finished[yearFinished].total += 1
+    return finished
+  }, {})
+---
+
+<BaseLayout pageTitle="Book Log • Evan Freeze">
+  <h1>Book Log</h1>
+  {
+    Object.keys(booksToDisplay).map((year) => (
+      <details class="years" open>
+        <summary>
+          {year} <span>({booksToDisplay[year].total})</span>
+        </summary>
+        {Object.keys(booksToDisplay[year].books).map((month) => (
+          <details class="months" open>
+            <summary>
+              {month} <span>({booksToDisplay[year].books[month].length})</span>
+            </summary>
+            <ul>
+              {booksToDisplay[year].books[month].map((book) => (
+                <li>
+                  <h3>
+                    <a href={`/book-log/${book.slug}`}>
+                      {book.data.title} <span>by {book.data.author}</span>
+                    </a>
+                  </h3>
+                </li>
+              ))}
+            </ul>
+          </details>
+        ))}
+      </details>
+    ))
+  }
+  <div class="disclaimer">
+    <p>
+      This list is incomplete. I'm working to get all of the 2024 data in here,
+      at least.
+    </p>
+    <p>More to come!</p>
+  </div>
+</BaseLayout>
+
+<style>
+  h3 {
+    color: var(--text-primary-light);
+    font-size: 1rem;
+
+    a {
+      color: currentColor;
+      text-decoration-color: var(--tint-color);
+
+      span {
+        font-weight: normal;
+        color: var(--text-secondary-light);
+      }
+    }
+  }
+
+  details {
+    margin: 16px 0;
+  }
+
+  summary {
+    font-size: 1.25rem;
+    margin: 8px 0;
+    cursor: default;
+
+    span {
+      opacity: 0.5;
+    }
+  }
+
+  .months {
+    margin-left: 16px;
+  }
+
+  ul {
+    margin-left: 12px;
+    margin-bottom: 24px;
+  }
+
+  .disclaimer {
+    margin-top: 48px;
+    background-color: var(--text-primary-dark);
+    padding: 16px;
+    border-radius: 12px;
+    font-size: 0.9rem;
+    line-height: 1;
+    text-align: center;
+    font-style: italic;
+
+    p {
+      margin: 0;
+    }
+  }
+
+  @media (prefers-color-scheme: dark) {
+    h3 {
+      color: var(--text-primary-dark);
+
+      a {
+        color: currentColor;
+
+        span {
+          var(--text-secondary-dark);
+        }
+      }
+    }
+
+    .disclaimer {
+      background-color: var(--text-secondary-light);
+    }
+  }
+</style>

@@ -1,5 +1,4 @@
 ---
-layout: ../../layouts/BlogPostLayout.astro
 title: The Productivity App Carousel
 description: Maybe this one will solve everything
 pubDate: October 9, 2021

@@ -1,5 +1,4 @@
 ---
-layout: ../../layouts/BlogPostLayout.astro
 title: The Wave of Declarative UI
 description: It seems like all the major app platforms are riding it
 pubDate: January 20, 2024
