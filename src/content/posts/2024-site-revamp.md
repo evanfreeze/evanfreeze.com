@@ -1,5 +1,4 @@
 ---
-layout: ../../layouts/BlogPostLayout.astro
 title: 2024 Site Revamp
 description: Are you even a web developer if you don't rewrite your blog instead of actually blogging?
 pubDate: January 11, 2024

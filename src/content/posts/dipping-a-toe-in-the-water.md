@@ -1,5 +1,4 @@
 ---
-layout: ../../layouts/BlogPostLayout.astro
 title: Dipping a Toe in the Water
 description: I'm building an iOS app
 pubDate: February 28, 2021

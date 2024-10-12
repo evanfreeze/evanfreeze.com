@@ -1,5 +1,4 @@
 ---
-layout: ../../layouts/BlogPostLayout.astro
 title: Welcome
 description: Here goes nothin'
 pubDate: February 28, 2021

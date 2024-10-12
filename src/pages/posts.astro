@@ -1,6 +1,9 @@
 ---
 import BaseLayout from "@layouts/BaseLayout.astro"
-let allPosts = await Astro.glob("./posts/*.md")
+import { getCollection } from "astro:content"
+let allPosts = await getCollection("posts")
+
+console.log(allPosts)
 ---
 
 <BaseLayout pageTitle="Posts">
@@ -9,16 +12,16 @@ let allPosts = await Astro.glob("./posts/*.md")
     allPosts
       .sort(
         (p1, p2) =>
-          new Date(p2.frontmatter.pubDate).getTime() -
-          new Date(p1.frontmatter.pubDate).getTime(),
+          new Date(p2.data.pubDate).getTime() -
+          new Date(p1.data.pubDate).getTime(),
       )
       .map((post) => (
         <li class="post-list-item">
-          <a href={post.url}>
-            <h3>{post.frontmatter.title}</h3>
+          <a href={`/posts/${post.slug}`}>
+            <h3>{post.data.title}</h3>
           </a>
-          <p>{post.frontmatter.description}</p>
-          <span>{post.frontmatter.pubDate}</span>
+          <p>{post.data.description}</p>
+          <span>{post.data.pubDate}</span>
         </li>
       ))
   }

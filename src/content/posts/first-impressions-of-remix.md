@@ -1,5 +1,4 @@
 ---
-layout: ../../layouts/BlogPostLayout.astro
 title: First Impressions of Remix
 description: It's cool
 pubDate: November 28, 2021
