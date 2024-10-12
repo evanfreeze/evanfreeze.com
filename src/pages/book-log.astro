@@ -1,8 +1,8 @@
 ---
 import BaseLayout from "@layouts/BaseLayout.astro"
-import { getCollection } from "astro:content"
+import { CollectionEntry, getCollection } from "astro:content"
 
-const books = await getCollection("books")
+const books: Array<CollectionEntry<'book'>> = await getCollection("books")
 
 const MONTHS = [
   "January",
@@ -19,6 +19,7 @@ const MONTHS = [
   "December",
 ]
 
+const currentlyReading: CollectionEntry<'book'> = [];
 const booksToDisplay = books
   .sort(
     (b1, b2) =>
@@ -26,6 +27,10 @@ const booksToDisplay = books
       new Date(b1.data.finishedReading).getTime(),
   )
   .reduce((finished, book) => {
+    if (!book.data.finishedReading) {
+      currentlyReading.push(book)
+      return finished
+    }
     const dateFinished = new Date(book.data.finishedReading)
     const yearFinished = dateFinished.getFullYear()
     const monthFinished = MONTHS[dateFinished.getMonth()]
@@ -43,6 +48,24 @@ const booksToDisplay = books
 
 <BaseLayout pageTitle="Book Log • Evan Freeze">
   <h1>Book Log</h1>
+  {
+    <details class="years" open>
+      <summary>Reading</summary>
+      <ul>
+        {currentlyReading
+          .sort((b1, b2) => new Date(b2.data.startedReading).getTime() - new Date(b1.data.startedReading).getTime())
+          .map(book => (
+          <li>
+            <h3>
+              <a href={`/book-log/${book.slug}`}>
+                {book.data.title} <span>by {book.data.author}</span>
+              </a>
+            </h3>
+          </li>
+        ))}
+      </ul>
+    </details>
+  }
   {
     Object.keys(booksToDisplay).map((year) => (
       <details class="years" open>
