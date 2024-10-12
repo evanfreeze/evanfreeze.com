@@ -1,9 +1,8 @@
 ---
 import BaseLayout from "@layouts/BaseLayout.astro"
 import { getCollection } from "astro:content"
-let allPosts = await getCollection("posts")
 
-console.log(allPosts)
+const allPosts = await getCollection("posts")
 ---
 
 <BaseLayout pageTitle="Posts">
