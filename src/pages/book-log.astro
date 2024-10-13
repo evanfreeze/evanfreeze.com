@@ -2,7 +2,7 @@
 import BaseLayout from "@layouts/BaseLayout.astro"
 import { CollectionEntry, getCollection } from "astro:content"
 
-const books: Array<CollectionEntry<'book'>> = await getCollection("books")
+const books: Array<CollectionEntry<"book">> = await getCollection("books")
 
 const MONTHS = [
   "January",
@@ -19,7 +19,7 @@ const MONTHS = [
   "December",
 ]
 
-const currentlyReading: CollectionEntry<'book'> = [];
+const currentlyReading: CollectionEntry<"book"> = []
 const booksToDisplay = books
   .sort(
     (b1, b2) =>
@@ -49,22 +49,28 @@ const booksToDisplay = books
 <BaseLayout pageTitle="Book Log • Evan Freeze">
   <h1>Book Log</h1>
   {
-    <details class="years" open>
-      <summary>Reading</summary>
-      <ul>
-        {currentlyReading
-          .sort((b1, b2) => new Date(b2.data.startedReading).getTime() - new Date(b1.data.startedReading).getTime())
-          .map(book => (
-          <li>
-            <h3>
-              <a href={`/book-log/${book.slug}`}>
-                {book.data.title} <span>by {book.data.author}</span>
-              </a>
-            </h3>
-          </li>
-        ))}
-      </ul>
-    </details>
+    (
+      <details class="years" open>
+        <summary>Reading</summary>
+        <ul>
+          {currentlyReading
+            .sort(
+              (b1, b2) =>
+                new Date(b2.data.startedReading).getTime() -
+                new Date(b1.data.startedReading).getTime(),
+            )
+            .map((book) => (
+              <li>
+                <h3>
+                  <a href={`/book-log/${book.slug}`}>
+                    {book.data.title} <span>by {book.data.author}</span>
+                  </a>
+                </h3>
+              </li>
+            ))}
+        </ul>
+      </details>
+    )
   }
   {
     Object.keys(booksToDisplay).map((year) => (
@@ -164,7 +170,7 @@ const booksToDisplay = books
         color: currentColor;
 
         span {
-          var(--text-secondary-dark);
+          color: var(--text-secondary-dark);
         }
       }
     }
