@@ -7,4 +7,4 @@ medium: physical
 tags: [web design, accessibility, work]
 ---
 
-I was excited to read a book by _that_ Eric Meyer, of CSS reset fame. Overall this was a quick read about how to be more inclusive when desigining things for humans. A must-read for anyone in product or engineering.
+I was excited to read a book by _that_ Eric Meyer, of CSS reset fame. Overall this was a quick read about how to be more inclusive when designing things for humans. A must-read for anyone in product or engineering.

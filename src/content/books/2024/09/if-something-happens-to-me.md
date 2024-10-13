@@ -7,4 +7,4 @@ medium: digital
 tags: [mystery, library]
 ---
 
-If there are certain movies that are "popcorn" movies—meaning you don't put too much thought into it, you just sit back and go along for the ride without thinking too much—then this is a popcorn book. I had a fun time.
+If there are certain movies that are "popcorn" movies—meaning you don't put too much thought into it, you just sit back and go along for the ride—then this is a popcorn book. I had a fun time.
