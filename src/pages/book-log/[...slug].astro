@@ -2,7 +2,6 @@
 import "../../styles/global.css"
 import { getCollection, type CollectionEntry } from "astro:content"
 import BaseLayout from "../../layouts/BaseLayout.astro"
-import { undefined } from "astro:schema"
 
 export async function getStaticPaths() {
   const allBooks = await getCollection("books")
