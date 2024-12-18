@@ -2,6 +2,7 @@
 import "../../styles/global.css"
 import { getCollection, type CollectionEntry } from "astro:content"
 import BaseLayout from "../../layouts/BaseLayout.astro"
+import { undefined } from "astro:schema"
 
 export async function getStaticPaths() {
   const allBooks = await getCollection("books")
@@ -19,10 +20,21 @@ interface Props {
 const { book } = Astro.props
 const { Content } = await book.render()
 const readingDuration = (() => {
-  const start = new Date(book.data.startedReading).toDateString()
+  // adjusting time forward to get around utc/central mismtach
+  const roughlyTwelveHours = 1000 * 60 * 60 * 12
+  const startTime = new Date(book.data.startedReading).getTime()
+  const adjustedStartTime = startTime + roughlyTwelveHours
+  const start = new Date(adjustedStartTime).toDateString()
+  const finishTime = book.data.finishedReading
+    ? new Date(book.data.finishedReading).getTime()
+    : null
+  const adjustedFinishTime = finishTime ? finishTime + roughlyTwelveHours : null
+  const finish = adjustedFinishTime
+    ? new Date(adjustedFinishTime).toDateString()
+    : null
 
-  if (book.data.finishedReading) {
-    return `Read from ${start} to ${new Date(book.data.finishedReading).toDateString()}`
+  if (finish) {
+    return `Read from ${start} to ${finish}`
   } else {
     return `Started reading on ${start}`
   }
