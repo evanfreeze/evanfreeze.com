@@ -44,6 +44,7 @@ const booksToDisplay = books
     finished[yearFinished].total += 1
     return finished
   }, {})
+console.log(booksToDisplay)
 ---
 
 <BaseLayout pageTitle="Book Log • Evan Freeze">
@@ -73,31 +74,37 @@ const booksToDisplay = books
     )
   }
   {
-    Object.keys(booksToDisplay).map((year) => (
-      <details class="years" open>
-        <summary>
-          {year} <span>({booksToDisplay[year].total})</span>
-        </summary>
-        {Object.keys(booksToDisplay[year].books).map((month) => (
-          <details class="months" open>
-            <summary>
-              {month} <span>({booksToDisplay[year].books[month].length})</span>
-            </summary>
-            <ul>
-              {booksToDisplay[year].books[month].map((book) => (
-                <li>
-                  <h3>
-                    <a href={`/book-log/${book.slug}`}>
-                      {book.data.title} <span>by {book.data.author}</span>
-                    </a>
-                  </h3>
-                </li>
-              ))}
-            </ul>
-          </details>
-        ))}
-      </details>
-    ))
+    Object.keys(booksToDisplay)
+      .reverse()
+      .map((year) => (
+        <details
+          class="years"
+          open={year === new Date().getFullYear().toString()}
+        >
+          <summary>
+            {year} <span>({booksToDisplay[year].total})</span>
+          </summary>
+          {Object.keys(booksToDisplay[year].books).map((month) => (
+            <details class="months" open>
+              <summary>
+                {month}{" "}
+                <span>({booksToDisplay[year].books[month].length})</span>
+              </summary>
+              <ul>
+                {booksToDisplay[year].books[month].map((book) => (
+                  <li>
+                    <h3>
+                      <a href={`/book-log/${book.slug}`}>
+                        {book.data.title} <span>by {book.data.author}</span>
+                      </a>
+                    </h3>
+                  </li>
+                ))}
+              </ul>
+            </details>
+          ))}
+        </details>
+      ))
   }
   <div class="disclaimer">
     <p>
