@@ -7,4 +7,4 @@ medium: physical
 tags: [gift, sci-fi, fiction, thriller]
 ---
 
-_I'm still processing this, more to come._
+I liked this one, but I'm not sure if I liked it quite as much as Dark Matter. I think switching back and forth between two "main" characters made it a little tricky to get quite as wrapped up in as Dark Matter, which just followed one continuous story from the start.
