@@ -1,7 +1,7 @@
 ---
 title: Minimalism as a philosophy vs. Minimalism as an aesthetic
 description: We've forgotten what "minimalism" is actually about.
-pubDate: July 12, 2025 UTC-5
+pubDate: July 12, 2025
 ---
 
 When I think “minimalism,” I’m picturing a white room containing clean-lined furniture with almost nothing on it—an artsy coffee-table book, a lamp, sometimes a plant. Its couch is leather, floor sometimes concrete, a cool color temperature.
