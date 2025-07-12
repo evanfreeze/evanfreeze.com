@@ -14,8 +14,19 @@ const currentYear = new Date().getFullYear()
   footer {
     color: var(--text-tertiary-light);
     font-size: 0.7rem;
-    padding: 16px 0;
+    text-align: center;
+    text-wrap: balance;
+    padding: 16px 0 0;
     display: flex;
-    justify-content: space-between;
+    flex-direction: column-reverse;
+    gap: 8px;
+  }
+
+  @media (min-width: 560px) {
+    footer {
+      gap: 8px;
+      flex-direction: row;
+      justify-content: space-between;
+    }
   }
 </style>
