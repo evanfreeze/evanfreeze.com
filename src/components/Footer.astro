@@ -4,7 +4,10 @@ const currentYear = new Date().getFullYear()
 ---
 
 <footer>
-  <span>© 2009 – {currentYear} • Evan Freeze</span>
+  <span>
+    © 2009 – {currentYear} • Evan Freeze
+  </span>
+  <span>I don't use LLMs for anything on this site, nor will I ever.</span>
 </footer>
 
 <style>
@@ -12,6 +15,7 @@ const currentYear = new Date().getFullYear()
     color: var(--text-tertiary-light);
     font-size: 0.7rem;
     padding: 16px 0;
-    margin-inline: auto;
+    display: flex;
+    justify-content: space-between;
   }
 </style>
