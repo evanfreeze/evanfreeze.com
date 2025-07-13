@@ -40,35 +40,21 @@ const allPosts = await getCollection("posts")
 
   .post-list-item h3 {
     margin: 0;
-    color: var(--text-primary-light);
+    color: var(--text-primary);
   }
 
   .post-list-item p {
     margin: 0;
     margin-top: 0.3rem;
     font-size: 0.95rem;
-    color: var(--text-secondary-light);
+    color: var(--text-secondary);
   }
 
   .post-list-item span {
     display: block;
     margin-top: 1rem;
     font-size: 0.8rem;
-    color: var(--text-secondary-light);
+    color: var(--text-secondary);
     font-weight: 300;
-  }
-
-  @media (prefers-color-scheme: dark) {
-    .post-list-item p {
-      color: var(--text-secondary-dark);
-    }
-
-    .post-list-item span {
-      color: var(--text-secondary-dark);
-    }
-
-    .post-list-item h3 {
-      color: var(--text-primary-dark);
-    }
   }
 </style>

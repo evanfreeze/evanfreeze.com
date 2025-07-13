@@ -1,15 +1,11 @@
 :root {
-  --text-primary-light: hsl(220, 20%, 10%);
-  --text-secondary-light: hsl(220, 20%, 40%);
-  --text-tertiary-light: hsl(220, 20%, 50%);
-  --text-primary-dark: hsl(220, 10%, 90%);
-  --text-secondary-dark: hsl(220, 10%, 60%);
-  --text-tertiary-dark: hsl(220, 10%, 50%);
-  /* --tint-color: #10aeba; */
-  --tint-color: #0e753a;
-  --bar-color: #ff00bf;
-  --light-bg: hsl(0, 100%, 100%);
-  --dark-bg: hsl(220, 20%, 20%);
+  color-scheme: light dark;
+  --text-primary: light-dark(hsl(0, 0%, 10%), hsl(0, 0%, 80%));
+  --text-secondary: light-dark(hsl(0, 0%, 30%), hsl(0, 0%, 60%));
+  --text-tertiary: light-dark(hsl(0, 0%, 50%), hsl(0, 0%, 40%));
+  --tint-color: light-dark(#0e753a, #23c86a);
+  --background-primary: light-dark(hsl(0, 0%, 95%), hsl(0, 0%, 10%));
+  --background-secondary: light-dark(hsl(0, 0%, 90%), hsl(0, 0%, 15%));
 }
 
 .visually-hidden:not(:focus):not(:active) {
@@ -25,12 +21,13 @@
 }
 
 html {
-  font-family: system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+  font-family:
+    system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
     "Segoe UI Symbol", "Noto Color Emoji";
-  color: var(--text-primary-light);
+  color: var(--text-primary);
   margin: 0;
   padding: 0;
-  background-color: var(--light-bg);
+  background-color: var(--background-primary);
 }
 
 body {
@@ -44,25 +41,34 @@ h3,
 h4,
 h5,
 h6 {
-  color: var(--text-primary-light);
+  color: var(--text-primary);
+  text-wrap: pretty;
 }
 
 a {
-  color: var(--text-secondary-light);
+  color: var(--tint-color);
+  text-decoration: underline;
+
+  & visited {
+    color: var(--text-secondary);
+  }
 }
 
 p {
   line-height: 1.75rem;
 }
 
-/* Post Styles */
+/* Shared styles between /posts and /book-log */
+
+.subtitle {
+  color: var(--text-tertiary);
+  font-weight: 500;
+  font-size: 0.9rem;
+  font-style: italic;
+}
 
 article {
   padding-bottom: 96px;
-}
-
-article p {
-  line-height: 1.7;
 }
 
 article code {
@@ -79,48 +85,6 @@ article pre {
   border-radius: 0.5rem;
 }
 
-p a {
-  color: var(--tint-color);
-}
-
-p a:visited {
-  color: var(--tint-color);
-}
-
-p a:hover {
-  text-decoration: underline;
-  color: var(--tint-color);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --tint-color: #23c86a;
-  }
-
-  html {
-    background-color: var(--dark-bg);
-    color: var(--text-primary-dark);
-  }
-
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    color: var(--text-primary-dark);
-  }
-
-  footer * {
-    color: var(--text-tertiary-dark);
-  }
-
-  a {
-    color: var(--text-secondary-dark);
-  }
-
-  /* Post Styles */
-  article p {
-    color: var(--text-secondary-dark);
-  }
+.back-to-list-link {
+  text-decoration: none;
 }

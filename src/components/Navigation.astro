@@ -39,32 +39,18 @@ let showEF = Astro.url.pathname !== "/"
   }
 
   nav a {
-    color: var(--text-secondary-light);
+    color: var(--text-secondary);
     font-size: 0.85rem;
-    font-weight: bold;
-    text-transform: uppercase;
+    font-weight: 500;
     padding: 8px 12px;
   }
+
   nav a:visited {
-    color: var(--text-secondary-light);
+    color: var(--text-secondary);
   }
 
   nav a:hover {
     border-radius: 8px;
-    background: hsla(0, 0%, 0%, 0.1);
-  }
-
-  @media (prefers-color-scheme: dark) {
-    nav a {
-      color: var(--text-secondary-dark);
-    }
-    nav a:visited {
-      color: var(--text-secondary-dark);
-    }
-
-    nav a:hover {
-      color: var(--text-primary-dark);
-      background: hsla(0, 0%, 100%, 0.1);
-    }
+    background: var(--background-secondary);
   }
 </style>

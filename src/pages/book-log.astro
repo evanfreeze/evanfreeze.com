@@ -116,7 +116,7 @@ const booksToDisplay = books
 
 <style>
   h3 {
-    color: var(--text-primary-light);
+    color: var(--text-primary);
     font-size: 1rem;
 
     a {
@@ -125,7 +125,7 @@ const booksToDisplay = books
 
       span {
         font-weight: normal;
-        color: var(--text-secondary-light);
+        color: var(--text-secondary);
       }
     }
   }
@@ -155,7 +155,7 @@ const booksToDisplay = books
 
   .disclaimer {
     margin-top: 48px;
-    background-color: var(--text-primary-dark);
+    background-color: var(--background-secondary);
     padding: 16px;
     border-radius: 12px;
     font-size: 0.9rem;
@@ -164,25 +164,8 @@ const booksToDisplay = books
     font-style: italic;
 
     p {
-      margin: 0;
-    }
-  }
-
-  @media (prefers-color-scheme: dark) {
-    h3 {
-      color: var(--text-primary-dark);
-
-      a {
-        color: currentColor;
-
-        span {
-          color: var(--text-secondary-dark);
-        }
-      }
-    }
-
-    .disclaimer {
-      background-color: var(--text-secondary-light);
+      line-height: 1.2rem;
+      text-wrap: balance;
     }
   }
 </style>
