@@ -2,7 +2,6 @@
 
 <style>
   #color-bar {
-    --bar-color: #0e753a;
     content: "";
     height: 10px;
     width: 320px;
@@ -11,7 +10,7 @@
     display: flex;
     justify-items: center;
     transition: background 2s ease-in-out;
-    background-color: var(--bar-color);
+    background-color: var(--tint-color);
   }
 </style>
 
@@ -71,10 +70,10 @@
   }
 
   const colorBar = document.querySelector("#color-bar") as HTMLElement
-  let color = colorBar?.style.getPropertyValue("--bar-color")
+  let color = colorBar?.style.getPropertyValue("--tint-color")
 
   setInterval(() => {
     color = getRandomColor(color)
-    colorBar.style.setProperty("--bar-color", color)
+    colorBar.style.setProperty("--tint-color", color)
   }, 2000)
 </script>

@@ -62,13 +62,13 @@ const readingDuration = (() => {
 
     span {
       font-weight: normal;
-      color: var(--text-secondary-light);
+      color: var(--text-secondary);
     }
   }
 
   .subtitle {
     font-size: 0.9rem;
-    color: var(--text-secondary-light);
+    color: var(--text-secondary);
     font-weight: 300;
     margin-bottom: 32px;
   }
@@ -85,7 +85,8 @@ const readingDuration = (() => {
     font-size: 0.8rem;
     padding: 4px 8px;
     border-radius: 4px;
-    background-color: rgba(0, 0, 0, 0.1);
+    background-color: var(--background-secondary);
+    color: var(--text-secondary);
     max-width: fit-content;
     white-space: nowrap;
   }
@@ -93,19 +94,5 @@ const readingDuration = (() => {
   .all-books-link {
     text-decoration: none;
     color: var(--tint-color);
-  }
-
-  @media (prefers-color-scheme: dark) {
-    h1 span {
-      color: var(--text-secondary-dark);
-    }
-
-    .subtitle {
-      color: var(--text-secondary-dark);
-    }
-
-    .tag {
-      background-color: var(--text-secondary-light);
-    }
   }
 </style>
