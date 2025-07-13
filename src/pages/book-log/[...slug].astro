@@ -2,6 +2,7 @@
 import "../../styles/global.css"
 import { getCollection, type CollectionEntry } from "astro:content"
 import BaseLayout from "../../layouts/BaseLayout.astro"
+import TagList from "../../components/TagList.astro"
 
 export async function getStaticPaths() {
   const allBooks = await getCollection("books")
@@ -17,6 +18,8 @@ interface Props {
 }
 
 const { book } = Astro.props
+const typeTag = `${book.data.medium} book`
+const tags = book.data.tags ? [typeTag, ...book.data.tags] : [typeTag]
 const { Content } = await book.render()
 const readingDuration = (() => {
   // adjusting time forward to get around utc/central mismtach
@@ -48,51 +51,14 @@ const readingDuration = (() => {
   <p class="subtitle">{readingDuration}</p>
   <article>
     <Content />
-    <div class="tags">
-      <div class="tag">{book.data.medium} book</div>
-      {book.data.tags?.map((tag) => <div class="tag">{tag}</div>)}
-    </div>
+    <TagList tags={tags} />
   </article>
-  <a class="all-books-link" href="/book-log">← All Books</a>
+  <a class="back-to-list-link" href="/book-log">← All Books</a>
 </BaseLayout>
 
 <style>
-  h1 {
-    margin-bottom: 0;
-
-    span {
-      font-weight: normal;
-      color: var(--text-secondary);
-    }
-  }
-
-  .subtitle {
-    font-size: 0.9rem;
-    color: var(--text-tertiary);
-    font-weight: 300;
-    margin-bottom: 32px;
-  }
-
-  .tags {
-    margin-top: 36px;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-  }
-
-  .tag {
-    font-style: italic;
-    font-size: 0.8rem;
-    padding: 4px 8px;
-    border-radius: 4px;
-    background-color: var(--background-secondary);
-    color: var(--text-tertiary);
-    max-width: fit-content;
-    white-space: nowrap;
-  }
-
-  .all-books-link {
-    text-decoration: none;
-    color: var(--tint-color);
+  h1 span {
+    font-weight: normal;
+    color: var(--text-secondary);
   }
 </style>

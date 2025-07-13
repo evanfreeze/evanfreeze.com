@@ -21,27 +21,9 @@ const { Content } = await post.render()
 
 <BaseLayout pageTitle={post.data.title}>
   <h1>{post.data.title}</h1>
-  <h2>{post.data.pubDate}</h2>
+  <p class="subtitle">{post.data.pubDate}</p>
   <article>
     <Content />
   </article>
-  <a class="all-posts-link" href="/posts">← All Posts</a>
+  <a class="back-to-list-link" href="/posts">← All Posts</a>
 </BaseLayout>
-
-<style>
-  h1 {
-    text-wrap: pretty;
-  }
-
-  h2 {
-    font-size: 0.9rem;
-    color: var(--text-tertiary);
-    font-weight: 300;
-    margin-bottom: 32px;
-  }
-
-  .all-posts-link {
-    text-decoration: none;
-    color: var(--tint-color);
-  }
-</style>

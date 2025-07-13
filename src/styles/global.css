@@ -42,24 +42,33 @@ h4,
 h5,
 h6 {
   color: var(--text-primary);
+  text-wrap: pretty;
 }
 
 a {
-  color: var(--text-secondary);
+  color: var(--tint-color);
+  text-decoration: underline;
+
+  & visited {
+    color: var(--text-secondary);
+  }
 }
 
 p {
   line-height: 1.75rem;
 }
 
-/* Post Styles */
+/* Shared styles between /posts and /book-log */
+
+.subtitle {
+  color: var(--text-tertiary);
+  font-weight: 500;
+  font-size: 0.9rem;
+  font-style: italic;
+}
 
 article {
   padding-bottom: 96px;
-}
-
-article p {
-  line-height: 1.7;
 }
 
 article code {
@@ -76,15 +85,6 @@ article pre {
   border-radius: 0.5rem;
 }
 
-p a {
-  color: var(--tint-color);
-}
-
-p a:visited {
-  color: var(--tint-color);
-}
-
-p a:hover {
-  text-decoration: underline;
-  color: var(--tint-color);
+.back-to-list-link {
+  text-decoration: none;
 }
