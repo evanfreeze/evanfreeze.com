@@ -1,8 +1,8 @@
 :root {
   color-scheme: light dark;
   --text-primary: light-dark(hsl(0, 0%, 10%), hsl(0, 0%, 80%));
-  --text-secondary: light-dark(hsl(0, 0%, 40%), hsl(0, 0%, 50%));
-  --text-tertiary: light-dark(hsl(0, 0%, 70%), hsl(0, 0%, 20%));
+  --text-secondary: light-dark(hsl(0, 0%, 30%), hsl(0, 0%, 60%));
+  --text-tertiary: light-dark(hsl(0, 0%, 50%), hsl(0, 0%, 40%));
   --tint-color: light-dark(#0e753a, #23c86a);
   --background-primary: light-dark(hsl(0, 0%, 95%), hsl(0, 0%, 10%));
   --background-secondary: light-dark(hsl(0, 0%, 90%), hsl(0, 0%, 15%));
