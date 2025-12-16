@@ -22,7 +22,7 @@
 
 html {
   font-family:
-    system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+    Hevetica, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
     "Segoe UI Symbol", "Noto Color Emoji";
   color: var(--text-primary);
   margin: 0;
