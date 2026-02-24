@@ -11,12 +11,12 @@
   "license": "ISC",
   "private": true,
   "dependencies": {
-    "@astrojs/netlify": "^6.3.1",
+    "@astrojs/netlify": "^5.3.2",
     "@astrojs/rss": "^4.0.11",
     "astro": "^5.7.5"
   },
   "devDependencies": {
-    "eslint": "^9.25.1",
+    "eslint": "^10.0.2",
     "eslint-config-prettier": "^10.1.2",
     "prettier": "^3.5.3",
     "prettier-plugin-astro": "^0.14.1",
