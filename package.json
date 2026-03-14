@@ -11,9 +11,9 @@
   "license": "ISC",
   "private": true,
   "dependencies": {
-    "@astrojs/netlify": "^6.6.4",
-    "@astrojs/rss": "^4.0.15",
-    "astro": "^5.17.3"
+    "@astrojs/netlify": "^7.0.2",
+    "@astrojs/rss": "^4.0.17",
+    "astro": "^6.0.4"
   },
   "devDependencies": {
     "eslint": "^10.0.2",
