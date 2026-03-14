@@ -17,7 +17,7 @@ const allPosts = await getCollection("posts")
       .map((post) => (
         <li class="post-list-item">
           <h3>
-            <a href={`/posts/${post.slug}`}>{post.data.title}</a>
+            <a href={`/posts/${post.id}`}>{post.data.title}</a>
           </h3>
           <p>{post.data.description}</p>
           <span>{post.data.pubDate}</span>
