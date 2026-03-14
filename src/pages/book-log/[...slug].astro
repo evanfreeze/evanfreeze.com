@@ -3,13 +3,14 @@ import "../../styles/global.css"
 import { getCollection, render, type CollectionEntry } from "astro:content"
 import BaseLayout from "../../layouts/BaseLayout.astro"
 import TagList from "../../components/TagList.astro"
+import { GetStaticPaths } from "astro"
 
 export async function getStaticPaths() {
   const allBooks = await getCollection("books")
   return allBooks.map((book) => ({
     params: { slug: book.id },
     props: { book },
-  }))
+  })) satisfies GetStaticPaths
 }
 
 interface Props {
