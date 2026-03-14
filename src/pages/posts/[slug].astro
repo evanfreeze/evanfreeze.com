@@ -1,14 +1,15 @@
 ---
 import "../../styles/global.css"
-import { getCollection, type CollectionEntry } from "astro:content"
+import { getCollection, render, type CollectionEntry } from "astro:content"
 import BaseLayout from "../../layouts/BaseLayout.astro"
+import { GetStaticPaths } from "astro"
 
 export async function getStaticPaths() {
   const allPosts = await getCollection("posts")
   return allPosts.map((post) => ({
-    params: { slug: post.slug },
+    params: { slug: post.id },
     props: { post },
-  }))
+  })) satisfies GetStaticPaths
 }
 
 interface Props {
@@ -16,7 +17,7 @@ interface Props {
 }
 
 const { post } = Astro.props
-const { Content } = await post.render()
+const { Content } = await render(post)
 ---
 
 <BaseLayout pageTitle={post.data.title}>

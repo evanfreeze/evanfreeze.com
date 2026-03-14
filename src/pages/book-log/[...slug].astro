@@ -1,15 +1,16 @@
 ---
 import "../../styles/global.css"
-import { getCollection, type CollectionEntry } from "astro:content"
+import { getCollection, render, type CollectionEntry } from "astro:content"
 import BaseLayout from "../../layouts/BaseLayout.astro"
 import TagList from "../../components/TagList.astro"
+import { GetStaticPaths } from "astro"
 
 export async function getStaticPaths() {
   const allBooks = await getCollection("books")
   return allBooks.map((book) => ({
-    params: { slug: book.slug },
+    params: { slug: book.id },
     props: { book },
-  }))
+  })) satisfies GetStaticPaths
 }
 
 interface Props {
@@ -20,7 +21,7 @@ interface Props {
 const { book } = Astro.props
 const typeTag = `${book.data.medium} book`
 const tags = book.data.tags ? [typeTag, ...book.data.tags] : [typeTag]
-const { Content } = await book.render()
+const { Content } = await render(book)
 const readingDuration = (() => {
   // adjusting time forward to get around utc/central mismtach
   const roughlyTwelveHours = 1000 * 60 * 60 * 12

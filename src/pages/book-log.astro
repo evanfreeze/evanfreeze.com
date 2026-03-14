@@ -62,7 +62,7 @@ const booksToDisplay = books
             .map((book) => (
               <li>
                 <h3>
-                  <a href={`/book-log/${book.slug}`}>
+                  <a href={`/book-log/${book.id}`}>
                     {book.data.title} <span>by {book.data.author}</span>
                   </a>
                 </h3>
@@ -93,7 +93,7 @@ const booksToDisplay = books
                 {booksToDisplay[year].books[month].map((book) => (
                   <li>
                     <h3>
-                      <a href={`/book-log/${book.slug}`}>
+                      <a href={`/book-log/${book.id}`}>
                         {book.data.title} <span>by {book.data.author}</span>
                       </a>
                     </h3>
