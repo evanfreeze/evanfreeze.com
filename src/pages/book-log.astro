@@ -31,7 +31,9 @@ const booksToDisplay = books
       currentlyReading.push(book)
       return finished
     }
-    const dateFinished = new Date(book.data.finishedReading)
+    const dateTime = book.data.finishedReading.getTime()
+    const adjustedDate = dateTime + 1000 * 60 * 60 * 6 // add 6 hours UTC offset
+    const dateFinished = new Date(adjustedDate)
     const yearFinished = dateFinished.getFullYear()
     const monthFinished = MONTHS[dateFinished.getMonth()]
     if (!finished[yearFinished]) {
